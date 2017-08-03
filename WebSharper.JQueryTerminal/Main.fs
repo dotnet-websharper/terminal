@@ -102,6 +102,8 @@ module Definition =
             "clear" => T<unit> ^-> T<unit>
             "destroy" => T<unit> ^-> T<unit>
             "echo" => (T<string> + (T<string> ^-> T<string>)) * !? EchoOptions ^-> T<unit>
+            "echoHtml" => T<string>?s ^-> T<unit>
+            |>WithInline("this.echo($s, {raw:true});")
             "enable" => T<unit> ^-> T<unit>
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>

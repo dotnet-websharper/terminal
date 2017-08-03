@@ -344,6 +344,34 @@ if (!console) {
   SC$1.$cctor();
   return SC$1.Main;
  };
+ Client.Help=function(command)
+ {
+  return command==="help"?{
+   $:1,
+   $0:null
+  }:null;
+ };
+ Client.Template=function(command)
+ {
+  return command==="template"?{
+   $:1,
+   $0:null
+  }:null;
+ };
+ Client.Clear=function(command)
+ {
+  return command==="clear"?{
+   $:1,
+   $0:null
+  }:null;
+ };
+ Client.Blank=function(command)
+ {
+  return command===""?{
+   $:1,
+   $0:null
+  }:null;
+ };
  Client.interpreter=function()
  {
   SC$1.$cctor();
@@ -356,14 +384,15 @@ if (!console) {
  };
  SC$1.$cctor=Runtime.Cctor(function()
  {
-  var r,r$1,interpreter,options;
-  SC$1.EO=(r={},r.raw=true,r);
-  SC$1.a=window.jQuery("body");
+  var r,interpreter,options;
   SC$1.interpreter=function(command)
   {
-   return command==="help"?this.echo("Available commands: help, clear, template"):command==="clear"?this.clear():command==="template"?this.echo("Template command"):this.echo("Unknown command");
+   var $1,$2,$3,$4;
+   return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?this.echo("Template command"):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.clear():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("<h1>Unknown command</h1>",{
+    raw:true
+   });
   };
-  SC$1.Opt=(r$1={},r$1.name="Terminal1",r$1.prompt=">",r$1.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r$1);
+  SC$1.Opt=(r={},r.name="Terminal1",r.prompt="> ",r.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r);
   SC$1.Main=(interpreter=Client.interpreter(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
   SC$1.$cctor=window.ignore;
  });

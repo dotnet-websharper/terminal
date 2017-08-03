@@ -10,30 +10,46 @@ open WebSharper.JQueryTerminal
 
 [<JavaScript>]
 module Client =
-    let EO =
-        EchoOptions(
-            Raw = true
-        )
 
-    let a = JQuery.Of("body")
+    let (|Help|_|) (command: string) =
+        if command = "help" then
+            Some ()
+        else
+            None
+
+    let (|Clear|_|) (command: string) =
+        if command = "clear" then
+            Some()
+        else
+            None
+
+    let (|Template|_|) (command: string) =
+        if command = "template" then
+            Some()
+        else
+            None
+    
+    let (|Blank|_|) (command: string) =
+        if command = "" then
+            Some()
+        else
+            None
 
     let interpreter =
         FuncWithThis<Terminal, string->Unit>(fun this command ->
-            if command = "help" then
-                this.Echo("Available commands: help, clear, template")
-            elif command = "clear" then
-                this.Clear()
-            elif command = "template" then
-                this.Echo("Template command")
-            else
-                this.Echo("Unknown command")
+            match command with
+            | Help -> this.Echo "Commands: help, clear, template"
+            | Template -> this.Echo "Template command"
+            | Clear -> this.Clear()
+            | Blank -> this.Echo ""
+            | _ -> this.EchoHtml("<h1>Unknown command</h1>")
         )
 
             
     let Opt =
         Options(
             Name = "Terminal1",
-            Prompt = ">",
+            Prompt = "> ",
             Greetings = "Welcome to the Terminal Test Page! See 'help' for the list of commands."
         )
     
