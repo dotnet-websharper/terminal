@@ -388,7 +388,7 @@ if (!console) {
   SC$1.interpreter=function(command)
   {
    var $1,$2,$3,$4;
-   return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?this.echo("Template command"):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.clear():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("<h1>Unknown command</h1>",{
+   return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?this.echo("Template command"):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.clear():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("<img src=\"https://www.smashingmagazine.com/wp-content/uploads/2015/06/10-dithering-opt.jpg\">",{
     raw:true
    });
   };

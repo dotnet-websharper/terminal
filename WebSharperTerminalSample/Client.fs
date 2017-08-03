@@ -42,7 +42,7 @@ module Client =
             | Template -> this.Echo "Template command"
             | Clear -> this.Clear()
             | Blank -> this.Echo ""
-            | _ -> this.EchoHtml("<h1>Unknown command</h1>")
+            | _ -> this.EchoHtml("Unknown command")
         )
 
             

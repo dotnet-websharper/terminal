@@ -51,7 +51,7 @@ module Definition =
                 "onBeforeCommand", T<string> ^-> T<unit>
                 //"onBeforeLogin"
                 //"onBeforeLogout"
-                //!!"onBlur" -- !! -- !!
+                //"onBlur"
                 //"onClear"
                 //"onCommandChange"
                 //"onCommandNotFound"
@@ -108,6 +108,8 @@ module Definition =
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>
             "settings" => T<unit> ^-> Options
+            "scrollToBottom" => T<unit> ^-> T<unit>
+            |>WithInline("this.scroll_to_bottom();")
         ]|>ignore
 
     let Assembly =
