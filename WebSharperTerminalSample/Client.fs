@@ -10,6 +10,11 @@ open WebSharper.JQueryTerminal
 
 [<JavaScript>]
 module Client =
+    
+    let rvInput = Var.Create ""
+    let html = 
+        Doc.Input [] rvInput
+
 
     let (|Help|_|) (command: string) =
         if command = "help" then
@@ -39,7 +44,14 @@ module Client =
         FuncWithThis<Terminal, string->Unit>(fun this command ->
             match command with
             | Help -> this.Echo "Commands: help, clear, template"
-            | Template -> this.Echo "Template command"
+            | Template ->
+                this.EchoHtml "<div id=\"my\"></div>"
+                html
+                |> Doc.RunById "my"
+  (*              rvInput.View
+                |> View.Map (fun _ -> "it works")
+                |> Doc.TextView
+                |> Doc.RunById "my"*)
             | Clear -> this.Clear()
             | Blank -> this.Echo ""
             | _ -> this.EchoHtml("Unknown command")

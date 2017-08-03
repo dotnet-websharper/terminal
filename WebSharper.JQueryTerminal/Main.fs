@@ -104,12 +104,17 @@ module Definition =
             "echo" => (T<string> + (T<string> ^-> T<string>)) * !? EchoOptions ^-> T<unit>
             "echoHtml" => T<string>?s ^-> T<unit>
             |>WithInline("this.echo($s, {raw:true});")
+            "echoElt" => T<obj>?s ^-> T<unit>
+            |>WithInline("console.log($s);")
             "enable" => T<unit> ^-> T<unit>
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>
             "settings" => T<unit> ^-> Options
-            "scrollToBottom" => T<unit> ^-> T<unit>
-            |>WithInline("this.scroll_to_bottom();")
+            "ScrollToBottom" => T<unit> ^-> T<unit>
+            |>WithSourceName "scroll_to_bottom"
+            "pause" => (T<bool> + T<unit>) ^-> T<unit>
+            "resume" => T<unit> ^-> T<unit>
+            "paused" => T<unit> ^-> T<bool>
         ]|>ignore
 
     let Assembly =
