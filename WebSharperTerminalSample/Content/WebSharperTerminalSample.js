@@ -344,10 +344,10 @@ if (!console) {
   SC$1.$cctor();
   return SC$1.Main;
  };
- Client.i=function()
+ Client.interpreter=function()
  {
   SC$1.$cctor();
-  return SC$1.i;
+  return SC$1.interpreter;
  };
  Client.Opt=function()
  {
@@ -359,12 +359,12 @@ if (!console) {
   var r,r$1,interpreter,options;
   SC$1.EO=(r={},r.raw=true,r);
   SC$1.a=window.jQuery("body");
-  SC$1.i=function(command)
+  SC$1.interpreter=function(command)
   {
-   return command==="help"?this.echo("Help command"):command==="clear"?this.clear():command==="template"?this.echo("Template command"):this.echo("command not found :(");
+   return command==="help"?this.echo("Available commands: help, clear, template"):command==="clear"?this.clear():command==="template"?this.echo("Template command"):this.echo("Unknown command");
   };
   SC$1.Opt=(r$1={},r$1.name="Terminal1",r$1.prompt=">",r$1.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r$1);
-  SC$1.Main=(interpreter=Client.i(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
+  SC$1.Main=(interpreter=Client.interpreter(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
   SC$1.$cctor=window.ignore;
  });
  Runtime.OnLoad(function()
