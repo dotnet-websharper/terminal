@@ -31,7 +31,7 @@ bt.Solution [
     bt.NuGet.CreatePackage()
         .Configure(fun c ->
             { c with
-                Title = Some "[A[BWebSharper.JQueryTerminal-1.5.3"
+                Title = Some "WebSharper.JQueryTerminal-1.5.3"
                 LicenseUrl = Some "http://websharper.com/licensing"
                 ProjectUrl = Some "https://bitbucket.org/IntelliFactory/websharper.terminal/overview"
                 Description = "WebSharper Extension for JQueryTerminal-1.5.3"
