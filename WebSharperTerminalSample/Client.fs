@@ -4,17 +4,22 @@ open WebSharper
 open WebSharper.JavaScript
 open WebSharper.JQuery
 open WebSharper.UI.Next
+open WebSharper.UI.Next.Html
 open WebSharper.UI.Next.Client
 open WebSharper.UI.Next.Templating
+open WebSharper.JQuery
 open WebSharper.JQueryTerminal
 
 [<JavaScript>]
 module Client =
     
-    let rvInput = Var.Create ""
-    let html = 
-        Doc.Input [] rvInput
+    type FormTemplate = Templating.Template<"./template.html">
 
+    let rvInputArray = Var.Create ""
+
+    let onDownload (pName:IRef<string>) _ _ = JS.Alert(pName.Value)
+
+    
 
     let (|Help|_|) (command: string) =
         if command = "help" then
@@ -39,15 +44,27 @@ module Client =
             Some()
         else
             None
-
+    let mutable numOfTemplates = 0
     let interpreter =
         FuncWithThis<Terminal, string->Unit>(fun this command ->
             match command with
             | Help -> this.Echo "Commands: help, clear, template"
             | Template ->
-                this.EchoHtml "<div id=\"my\"></div>"
+                numOfTemplates <- numOfTemplates + 1
+                let id = "template" + string numOfTemplates
+                let rvProjName = Var.Create ""
+                let html = 
+ (*                   Doc.Concat[
+                        Doc.Input [on.keyPress (fun _ ev -> ev.StopPropagation()); on.keyDown (fun _ ev -> ev.StopPropagation()); on.keyUp (fun _ ev -> ev.StopPropagation()); on.input (fun _ ev -> ev.StopPropagation())] rvInputList.[numOfTemplates]
+                    ]*)
+                    FormTemplate.Form()
+                        .ProjName(rvProjName)
+                        .EventProp([on.keyPress (fun _ ev -> ev.StopPropagation()); on.keyDown (fun _ ev -> ev.StopPropagation()); on.keyUp (fun _ ev -> ev.StopPropagation()); on.input (fun _ ev -> ev.StopPropagation())])
+                        .Download(onDownload rvProjName)
+                        .Doc()
+                this.EchoHtml ("<div id=\"" + id + "\"></div>")
                 html
-                |> Doc.RunById "my"
+                |> Doc.RunById id
   (*              rvInput.View
                 |> View.Map (fun _ -> "it works")
                 |> Doc.TextView

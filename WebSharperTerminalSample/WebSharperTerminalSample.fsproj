@@ -39,79 +39,6 @@
     <OutputPath>bin</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.5.0\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebSharper.Collections">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Control">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Control.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Core">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Core.JavaScript">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Core.JavaScript.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.InterfaceGenerator">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.InterfaceGenerator.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.JavaScript">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.JavaScript.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.JQuery">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.JQuery.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.JQueryTerminal">
-      <HintPath>..\build\net40\WebSharper.JQueryTerminal.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Main">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Main.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Sitelets">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Sitelets.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.UI.Next">
-      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.UI.Next.CSharp">
-      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.UI.Next.Templating">
-      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.UI.Next.Templating.Common">
-      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.UI.Next.Templating.Runtime">
-      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="WebSharper.Web">
-      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Web.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Client.fs" />
-    <Content Include="index.html" />
-    <Content Include="Web.config" />
-    <Content Include="Global.asax" />
-    <Compile Include="Global.asax.fs" />
-    <Content Include="packages.config" />
-  </ItemGroup>
   <Target Name="IncludeContent" BeforeTargets="Compile">
     <ItemGroup>
       <Content Include="Content/**/*.*" />
@@ -189,4 +116,78 @@
   </Target>
   <Import Project="..\packages\Zafir.UI.Next.4.0.159.68-beta9\build\Zafir.UI.Next.targets" Condition="Exists('..\packages\Zafir.UI.Next.4.0.159.68-beta9\build\Zafir.UI.Next.targets')" />
   <Import Project="..\packages\Zafir.FSharp.4.0.180.81-beta9\build\Zafir.FSharp.targets" Condition="Exists('..\packages\Zafir.FSharp.4.0.180.81-beta9\build\Zafir.FSharp.targets')" />
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Client.fs" />
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+    <Content Include="Global.asax" />
+    <Compile Include="Global.asax.fs" />
+    <Content Include="packages.config" />
+    <Content Include="template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.5.0\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebSharper.Collections">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Control">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Core">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Core.JavaScript">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Core.JavaScript.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.InterfaceGenerator">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.InterfaceGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.JavaScript">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.JavaScript.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.JQuery">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.JQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.JQueryTerminal">
+      <HintPath>..\build\net40\WebSharper.JQueryTerminal.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Main">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Main.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Sitelets">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Sitelets.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next">
+      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.CSharp">
+      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.Templating">
+      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.Templating.Common">
+      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.Templating.Runtime">
+      <HintPath>..\packages\Zafir.UI.Next.4.0.159.68-beta9\lib\net40\WebSharper.UI.Next.Templating.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebSharper.Web">
+      <HintPath>..\packages\Zafir.4.0.180.81-beta9\lib\net40\WebSharper.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
