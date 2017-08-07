@@ -33,7 +33,7 @@ bt.Solution [
             { c with
                 Title = Some "[A[BWebSharper.JQueryTerminal-1.5.3"
                 LicenseUrl = Some "http://websharper.com/licensing"
-                ProjectUrl = Some "https://github.com/intellifactory/https://github.com/intellifactory/websharper.jqueryterminal"
+                ProjectUrl = Some "https://bitbucket.org/IntelliFactory/websharper.terminal/overview"
                 Description = "WebSharper Extension for JQueryTerminal-1.5.3"
                 RequiresLicenseAcceptance = true })
         .Add(main)

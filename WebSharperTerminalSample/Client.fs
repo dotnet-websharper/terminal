@@ -71,7 +71,10 @@ module Client =
             | Blank -> this.Echo ""
             | _ -> this.EchoHtml("Unknown command")
         )
-
+    let i2 =
+        FuncWithThis<Terminal, string->Unit>(fun this command ->
+            this.Echo("")
+        )
             
     let Opt =
         Options(
@@ -82,4 +85,4 @@ module Client =
     
     [<SPAEntryPoint>]
     let Main =
-        Terminal("#body", interpreter, Opt)
+        Terminal("#body", i2, Opt)

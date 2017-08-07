@@ -358,15 +358,15 @@ if (!console) {
 (function()
 {
  "use strict";
- var WebSharperTerminalSample,Client,SC$1,WebSharper,UI,Next,Var,Operators,List,T,Arrays,AttrProxy,WebSharperTerminalSample_Templates,Snap,Abbrev,Fresh,AttrModule,Array,JavaScript,JSModule,Pervasives,Doc,Numeric,Attrs,Unchecked,DomUtility,SC$2,Enumerator,SC$3,Collections,Dictionary,Docs,SC$4,Mailbox,View,T$1,SC$5,Slice,Strings,Seq,HashSet,DocElemNode,Client$1,Docs$1,RunState,NodeSet,An,CheckedInput,Elt,DictionaryUtil,Attrs$1,Dyn,Concurrency,Anims,AppendList,String,Updates,SC$6,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,HashSetUtil,SC$8,Lazy,DomNodes,Queue,IntelliFactory,Runtime,console,$,String$1,Node,Date;
+ var WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Next,Var,List,T,Arrays,AttrProxy,WebSharperTerminalSample_Templates,Snap,Abbrev,Fresh,AttrModule,Array,JavaScript,JSModule,Pervasives,Doc,Numeric,Attrs,Unchecked,DomUtility,SC$2,Enumerator,SC$3,Collections,Dictionary,Docs,SC$4,Mailbox,View,T$1,SC$5,Slice,Strings,Seq,HashSet,DocElemNode,Client$1,Docs$1,RunState,NodeSet,An,CheckedInput,Elt,DictionaryUtil,Attrs$1,Dyn,Concurrency,Anims,AppendList,String,Updates,SC$6,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,HashSetUtil,SC$8,Lazy,DomNodes,Queue,IntelliFactory,Runtime,console,$,String$1,Node,Date;
  WebSharperTerminalSample=window.WebSharperTerminalSample=window.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
  SC$1=window.StartupCode$WebSharperTerminalSample$Client=window.StartupCode$WebSharperTerminalSample$Client||{};
  WebSharper=window.WebSharper=window.WebSharper||{};
+ Operators=WebSharper.Operators=WebSharper.Operators||{};
  UI=WebSharper.UI=WebSharper.UI||{};
  Next=UI.Next=UI.Next||{};
  Var=Next.Var=Next.Var||{};
- Operators=WebSharper.Operators=WebSharper.Operators||{};
  List=WebSharper.List=WebSharper.List||{};
  T=List.T=List.T||{};
  Arrays=WebSharper.Arrays=WebSharper.Arrays||{};
@@ -484,10 +484,10 @@ if (!console) {
    $0:null
   }:null;
  };
- Client.interpreter=function()
+ Client.i2=function()
  {
   SC$1.$cctor();
-  return SC$1.interpreter;
+  return SC$1.i2;
  };
  Client.Opt=function()
  {
@@ -497,7 +497,6 @@ if (!console) {
  SC$1.$cctor=Runtime.Cctor(function()
  {
   var r,interpreter,options;
-  SC$1.rvInputArray=Var.Create$1("");
   SC$1.numOfTemplates=0;
   SC$1.interpreter=function(command)
   {
@@ -565,10 +564,22 @@ if (!console) {
     raw:true
    });
   };
+  SC$1.i2=function()
+  {
+   return this.echo("");
+  };
   SC$1.Opt=(r={},r.name="Terminal1",r.prompt="> ",r.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r);
-  SC$1.Main=(interpreter=Client.interpreter(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
+  SC$1.Main=(interpreter=Client.i2(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
   SC$1.$cctor=window.ignore;
  });
+ Operators.FailWith=function(msg)
+ {
+  throw window.Error(msg);
+ };
+ Operators.KeyValue=function(kvp)
+ {
+  return[kvp.K,kvp.V];
+ };
  Var.Create$1=function(v)
  {
   var _var;
@@ -603,14 +614,6 @@ if (!console) {
      $1:[]
     });
    }
- };
- Operators.FailWith=function(msg)
- {
-  throw window.Error(msg);
- };
- Operators.KeyValue=function(kvp)
- {
-  return[kvp.K,kvp.V];
  };
  T=List.T=Runtime.Class({
   GetEnumerator:function()
