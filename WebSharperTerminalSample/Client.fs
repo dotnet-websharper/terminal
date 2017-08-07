@@ -15,8 +15,6 @@ module Client =
     
     type FormTemplate = Templating.Template<"./template.html">
 
-    let rvInputArray = Var.Create ""
-
     let onDownload (pName:IRef<string>) _ _ = JS.Alert(pName.Value)
 
     
