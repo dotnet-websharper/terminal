@@ -34,7 +34,7 @@ module Definition =
                 "historySize", T<int>
                 "historyState", T<bool>
                 "importHistory", T<bool>
-                //"keydown", T<>
+                //"keydown", (Event<Key> * Terminal) ^-> T<bool>
                 "keymap", T<obj>
                 //"keypress", T<>
                 "linksNoReferer", T<bool>
@@ -109,8 +109,8 @@ module Definition =
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>
             "settings" => T<unit> ^-> Options
-            "ScrollToBottom" => T<unit> ^-> T<unit>
-            |>WithSourceName "scroll_to_bottom"
+            "scroll_to_bottom" => T<unit> ^-> T<unit>
+            |>WithSourceName "ScrollToBottom"
             "pause" => (T<bool> + T<unit>) ^-> T<unit>
             "resume" => T<unit> ^-> T<unit>
             "reset" => T<unit> ^-> T<unit>
