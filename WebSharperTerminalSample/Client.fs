@@ -71,18 +71,15 @@ module Client =
             | Blank -> this.Echo ""
             | _ -> this.EchoHtml("Unknown command")
         )
-    let i2 =
-        FuncWithThis<Terminal, string->Unit>(fun this command ->
-            this.Echo("")
-        )
             
     let Opt =
         Options(
             Name = "Terminal1",
             Prompt = "> ",
-            Greetings = "Welcome to the Terminal Test Page! See 'help' for the list of commands."
+            Greetings = "Welcome to the Terminal Test Page! See 'help' for the list of commands.",
+            OnInit = (fun (t:Terminal) -> t.Enable(); t.Echo("Hey Dood, it's workin'!"))
         )
     
     [<SPAEntryPoint>]
     let Main =
-        Terminal("#body", i2, Opt)
+        Terminal("#body", interpreter, Opt)

@@ -484,10 +484,10 @@ if (!console) {
    $0:null
   }:null;
  };
- Client.i2=function()
+ Client.interpreter=function()
  {
   SC$1.$cctor();
-  return SC$1.i2;
+  return SC$1.interpreter;
  };
  Client.Opt=function()
  {
@@ -560,7 +560,7 @@ if (!console) {
     }))
    }))),this.echo("<div id=\""+id+"\"></div>",{
     raw:true
-   }),Doc.RunById(id,html)):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.clear():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("Unknown command",{
+   }),Doc.RunById(id,html)):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.reset():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("Unknown command",{
     raw:true
    });
   };
@@ -568,8 +568,12 @@ if (!console) {
   {
    return this.echo("");
   };
-  SC$1.Opt=(r={},r.name="Terminal1",r.prompt="> ",r.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r);
-  SC$1.Main=(interpreter=Client.i2(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
+  SC$1.Opt=(r={},r.name="Terminal1",r.prompt="> ",r.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r.onInit=function(t)
+  {
+   t.enable();
+   return t.echo("Hey Dood, it's workin'!");
+  },r);
+  SC$1.Main=(interpreter=Client.interpreter(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
   SC$1.$cctor=window.ignore;
  });
  Operators.FailWith=function(msg)

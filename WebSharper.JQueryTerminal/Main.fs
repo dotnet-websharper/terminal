@@ -59,7 +59,7 @@ module Definition =
                 //"onExport"
                 //"onImport"
                 //"onFocus"
-                //"onInt"
+                "onInit", Terminal ^-> T<unit>
                 "onPause", T<unit> ^-> T<unit>
                 "onPop", T<unit> ^-> T<unit>
                 "onPush", T<unit> ^-> T<unit>
@@ -103,9 +103,7 @@ module Definition =
             "destroy" => T<unit> ^-> T<unit>
             "echo" => (T<string> + (T<string> ^-> T<string>)) * !? EchoOptions ^-> T<unit>
             "echoHtml" => T<string>?s ^-> T<unit>
-            |>WithInline("this.echo($s, {raw:true});")
-            "echoElt" => T<obj>?s ^-> T<unit>
-            |>WithInline("console.log($s);")
+            |>WithInline("$this.echo($s, {raw:true})")
             "enable" => T<unit> ^-> T<unit>
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>
@@ -114,6 +112,7 @@ module Definition =
             |>WithSourceName "scroll_to_bottom"
             "pause" => (T<bool> + T<unit>) ^-> T<unit>
             "resume" => T<unit> ^-> T<unit>
+            "reset" => T<unit> ^-> T<unit>
             "paused" => T<unit> ^-> T<bool>
         ]|>ignore
 
