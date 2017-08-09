@@ -51,7 +51,7 @@ module Definition =
                 "onBeforeCommand", T<string> ^-> T<unit>
                 //"onBeforeLogin"
                 //"onBeforeLogout"
-                //"onBlur"
+                "onBlur", Terminal ^-> T<bool>
                 //"onClear"
                 //"onCommandChange"
                 //"onCommandNotFound"
@@ -105,6 +105,7 @@ module Definition =
             "echoHtml" => T<string>?s ^-> T<unit>
             |>WithInline("$this.echo($s, {raw:true})")
             "enable" => T<unit> ^-> T<unit>
+            "focus" => T<bool> ^->T<unit>
             "disable" => T<unit> ^-> T<unit>
             "flush" => T<unit> ^-> T<unit>
             "settings" => T<unit> ^-> Options
