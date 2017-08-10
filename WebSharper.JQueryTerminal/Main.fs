@@ -19,7 +19,7 @@ module Definition =
                 "checkArity", T<bool>
                 "clear", T<bool>
                 "clickTimeout", T<int>
-                "completion", callbackSA + T<string[]> + T<bool>
+                "completion", T<string[]>
                 "convertLinks", T<bool>
                 "describe", T<string> + T<bool>
                 "echoCommand", T<bool>
