@@ -17,6 +17,18 @@ module Client =
 
     let onDownload (pName:IRef<string>) _ _ = JS.Alert(pName.Value)
 
+
+    let intOpt =
+        InterpreterOptions(
+            Name = "No2",
+            Prompt = "+ "
+        )
+    let i2 = (fun (this: Terminal) command ->
+            match command with
+            | "asd" -> this.Echo "kek"
+            | "switch" -> this.Pop()
+            | _ -> this.Echo "..."
+        )
     
 
     let (|Help|_|) (command: string) =
@@ -33,6 +45,11 @@ module Client =
 
     let (|Template|_|) (command: string) =
         if command = "template" then
+            Some()
+        else
+            None
+    let (|Switch|_|) (command: string) =
+        if command = "switch" then
             Some()
         else
             None
@@ -68,6 +85,7 @@ module Client =
                 |> Doc.TextView
                 |> Doc.RunById "my"*)
             | Clear -> this.Clear()
+            | Switch -> this.Push (i2, intOpt)
             | Blank -> this.Echo ""
             | _ -> this.EchoHtml("Unknown command")
         )

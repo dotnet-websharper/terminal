@@ -477,6 +477,28 @@ if (!console) {
    $0:null
   }:null;
  };
+ Client.Switch=function(command)
+ {
+  return command==="switch"?{
+   $:1,
+   $0:null
+  }:null;
+ };
+ Client.i2=function(_this,command)
+ {
+  if(command==="asd")
+   _this.echo("kek");
+  else
+   if(command==="switch")
+    _this.pop();
+   else
+    _this.echo("...");
+ };
+ Client.intOpt=function()
+ {
+  SC$1.$cctor();
+  return SC$1.intOpt;
+ };
  Client.Blank=function(command)
  {
   return command===""?{
@@ -496,11 +518,12 @@ if (!console) {
  };
  SC$1.$cctor=Runtime.Cctor(function()
  {
-  var r,interpreter,options;
+  var r,r$1,interpreter,options;
+  SC$1.intOpt=(r={},r.name="No2",r.prompt="+ ",r);
   SC$1.numOfTemplates=0;
   SC$1.interpreter=function(command)
   {
-   var $1,$2,id,rvProjName,html,t,D,$3,$4;
+   var $1,$2,id,rvProjName,html,t,D,$3,$4,$5;
    return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?(Client.set_numOfTemplates(Client.numOfTemplates()+1),id="template"+window.String(Client.numOfTemplates()),rvProjName=Var.Create$1(""),html=WebSharperTerminalSample_Templates.form((D=function(a,a$1)
    {
     return Client.onDownload(rvProjName,a,a$1);
@@ -509,11 +532,11 @@ if (!console) {
     $0:{
      $:4,
      $0:"download",
-     $1:function($5)
+     $1:function($6)
      {
-      return function($6)
+      return function($7)
       {
-       return D($5,$6);
+       return D($6,$7);
       };
      }
     },
@@ -560,19 +583,18 @@ if (!console) {
     }))
    }))),this.echo("<div id=\""+id+"\"></div>",{
     raw:true
-   }),Doc.RunById(id,html)):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.reset():($4=Client.Blank(command),$4!=null&&$4.$==1)?this.echo(""):void this.echo("Unknown command",{
+   }),Doc.RunById(id,html)):($3=Client.Clear(command),$3!=null&&$3.$==1)?this.clear():($4=Client.Switch(command),$4!=null&&$4.$==1)?this.push(function(c)
+   {
+    return Client.i2(this,c);
+   },Client.intOpt()):($5=Client.Blank(command),$5!=null&&$5.$==1)?this.echo(""):this.echo("Unknown command",{
     raw:true
    });
   };
-  SC$1.i2=function()
-  {
-   return this.echo("");
-  };
-  SC$1.Opt=(r={},r.name="Terminal1",r.prompt="> ",r.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r.onInit=function(t)
+  SC$1.Opt=(r$1={},r$1.name="Terminal1",r$1.prompt="> ",r$1.greetings="Welcome to the Terminal Test Page! See 'help' for the list of commands.",r$1.onInit=function(t)
   {
    t.enable();
    return t.echo("Hey Dood, it's workin'!");
-  },r);
+  },r$1);
   SC$1.Main=(interpreter=Client.interpreter(),(options=Client.Opt(),void window.$("#body").terminal(interpreter,options)));
   SC$1.$cctor=window.ignore;
  });

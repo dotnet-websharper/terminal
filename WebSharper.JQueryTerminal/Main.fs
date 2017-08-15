@@ -93,6 +93,20 @@ module Definition =
             ]
         }
 
+    let InterpreterOptions =
+        Pattern.Config "InterpreterOptions"{
+            Required = []
+            Optional =
+            [
+                "name", T<string>
+                "prompt", T<string>
+                //onExit
+                //onStart
+                //keydown
+                "completion", T<string[]>
+            ]
+        }
+
     Terminal
         |+> Static[
             Constructor(T<string>?target * interpreterFunction?interpreter * Options?options)
@@ -115,6 +129,8 @@ module Definition =
             "resume" => T<unit> ^-> T<unit>
             "reset" => T<unit> ^-> T<unit>
             "paused" => T<unit> ^-> T<bool>
+            "push" => (interpreterFunction * InterpreterOptions) ^-> T<unit>
+            "pop" => T<unit> ^-> T<unit>
         ]|>ignore
 
     let Assembly =
@@ -130,6 +146,7 @@ module Definition =
                 Terminal
                 Options
                 EchoOptions
+                InterpreterOptions
             ]
         ]
 
