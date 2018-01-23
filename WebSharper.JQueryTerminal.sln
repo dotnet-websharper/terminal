@@ -4,8 +4,6 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQueryTerminal", "WebSharper.JQueryTerminal\WebSharper.JQueryTerminal.fsproj", "{93167253-1F52-46B0-911E-3DC03ACC1CBF}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQueryTerminal.Tests", "WebSharper.JQueryTerminal.Tests\WebSharper.JQueryTerminal.Tests.fsproj", "{756D6B15-82FC-4B69-8721-D5B2170B0465}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81D4E1D1-E78E-4DCB-9365-9A96241C8E06}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -20,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharperTerminalSample", "WebSharperTerminalSample\WebSharperTerminalSample.fsproj", "{BAE290A1-0DF4-433D-9C23-5F01D864EC02}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQueryTerminal.Tests", "WebSharper.JQueryTerminal.Tests\WebSharper.JQueryTerminal.Tests.fsproj", "{BAE290A1-0DF4-433D-9C23-5F01D864EC02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

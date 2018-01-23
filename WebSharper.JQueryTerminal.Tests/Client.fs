@@ -3,10 +3,10 @@ namespace WebSharperTerminalSample
 open WebSharper
 open WebSharper.JavaScript
 open WebSharper.JQuery
-open WebSharper.UI.Next
-open WebSharper.UI.Next.Html
-open WebSharper.UI.Next.Client
-open WebSharper.UI.Next.Templating
+open WebSharper.UI
+open WebSharper.UI.Html
+open WebSharper.UI.Client
+open WebSharper.UI.Templating
 open WebSharper.JQuery
 open WebSharper.JQueryTerminal
 
@@ -14,9 +14,6 @@ open WebSharper.JQueryTerminal
 module Client =
     
     type FormTemplate = Templating.Template<"./template.html">
-
-    let onDownload (pName:IRef<string>) _ _ = JS.Alert(pName.Value)
-
 
     let intOpt =
         InterpreterOptions(
@@ -75,7 +72,7 @@ module Client =
                     FormTemplate.Form()
                         .ProjName(rvProjName)
                         .EventProp([on.keyPress (fun _ ev -> ev.StopPropagation()); on.keyDown (fun _ ev -> ev.StopPropagation()); on.keyUp (fun _ ev -> ev.StopPropagation()); on.input (fun _ ev -> ev.StopPropagation())])
-                        .Download(onDownload rvProjName)
+                        .Download(fun _ -> JS.Alert(rvProjName.Value))
                         .Doc()
                 this.EchoHtml ("<div id=\"" + id + "\"></div>")
                 html
