@@ -348,7 +348,7 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,Array,Collections,Dictionary,HashSet,Client$1,Seq,MatchFailureException,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,Mailbox,SC$4,DocElemNode,CharacterData,Slice,Strings,Client$2,Docs$1,RunState,NodeSet,An,HashSetUtil,Attrs$1,Dyn,SC$5,CheckedInput,AttrModule,Elt,Concurrency,Anims,AppendList,String,Updates,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,Mailbox,SC$4,DocElemNode,CharacterData,Slice,Strings,Client$2,Docs$1,RunState,NodeSet,An,HashSetUtil,Attrs$1,Dyn,SC$5,CheckedInput,Elt,Concurrency,Anims,AppendList,String,Updates,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
  Global=window;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
@@ -375,13 +375,13 @@ if (!console) {
  WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  Snap=UI.Snap=UI.Snap||{};
+ AttrModule=UI.AttrModule=UI.AttrModule||{};
  Array=UI.Array=UI.Array||{};
  Collections=WebSharper.Collections=WebSharper.Collections||{};
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
  HashSet=Collections.HashSet=Collections.HashSet||{};
  Client$1=Runtime.Client=Runtime.Client||{};
  Seq=WebSharper.Seq=WebSharper.Seq||{};
- MatchFailureException=WebSharper.MatchFailureException=WebSharper.MatchFailureException||{};
  Pervasives=JavaScript.Pervasives=JavaScript.Pervasives||{};
  Doc=UI.Doc=UI.Doc||{};
  Abbrev=UI.Abbrev=UI.Abbrev||{};
@@ -415,7 +415,6 @@ if (!console) {
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  SC$5=Global.StartupCode$WebSharper_UI$Doc_Client=Global.StartupCode$WebSharper_UI$Doc_Client||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
- AttrModule=UI.AttrModule=UI.AttrModule||{};
  Elt=UI.Elt=UI.Elt||{};
  Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
  Anims=UI.Anims=UI.Anims||{};
@@ -529,23 +528,7 @@ if (!console) {
   SC$1.interpreter=function(command)
   {
    var $1,$2,id,rvProjName,html,p,t,$3,c,$4,ti,r$2,p$1,$5,$6,$7;
-   function a(a$4,ev)
-   {
-    return ev.stopPropagation();
-   }
-   function a$1(a$4,ev)
-   {
-    return ev.stopPropagation();
-   }
-   function a$2(a$4,ev)
-   {
-    return ev.stopPropagation();
-   }
-   function a$3(a$4,ev)
-   {
-    return ev.stopPropagation();
-   }
-   function f(a$4)
+   function f(a)
    {
     Global.alert(rvProjName.Get());
    }
@@ -562,29 +545,29 @@ if (!console) {
     $0:{
      $:3,
      $0:"eventprop",
-     $1:AttrProxy.Concat(List.ofArray([AttrProxy.HandlerImpl("keypress",function($8)
+     $1:AttrProxy.Concat(List.ofArray([AttrModule.Handler("keypress",function()
      {
-      return function($9)
+      return function(ev)
       {
-       return a($8,$9);
+       return ev.stopPropagation();
       };
-     }),AttrProxy.HandlerImpl("keydown",function($8)
+     }),AttrModule.Handler("keydown",function()
      {
-      return function($9)
+      return function(ev)
       {
-       return a$1($8,$9);
+       return ev.stopPropagation();
       };
-     }),AttrProxy.HandlerImpl("keyup",function($8)
+     }),AttrModule.Handler("keyup",function()
      {
-      return function($9)
+      return function(ev)
       {
-       return a$2($8,$9);
+       return ev.stopPropagation();
       };
-     }),AttrProxy.HandlerImpl("input",function($8)
+     }),AttrModule.Handler("input",function()
      {
-      return function($9)
+      return function(ev)
       {
-       return a$3($8,$9);
+       return ev.stopPropagation();
       };
      })]))
     },
@@ -924,16 +907,6 @@ if (!console) {
   x=Array.ofSeqNonCopying(xs);
   return Array.TreeReduce(Attrs.EmptyAttr(),AttrProxy.Append,x);
  };
- AttrProxy.HandlerImpl=function(event,q)
- {
-  return Attrs.Static(function(el)
-  {
-   el.addEventListener(event,function(d)
-   {
-    return(q(el))(d);
-   },false);
-  });
- };
  AttrProxy.Append=function(a,b)
  {
   return Attrs.AppendTree(a,b);
@@ -947,6 +920,16 @@ if (!console) {
   return Attrs.Static(function(el)
   {
    DomUtility.SetAttr(el,name,value);
+  });
+ };
+ AttrProxy.HandlerImpl=function(event,q)
+ {
+  return Attrs.Static(function(el)
+  {
+   el.addEventListener(event,function(d)
+   {
+    return(q(el))(d);
+   },false);
   });
  };
  JSModule.GetFieldValues=function(o)
@@ -1016,11 +999,7 @@ if (!console) {
  TemplateInstance.New=Runtime$1.Ctor(function(c,doc)
  {
   this.doc=doc;
-  if(c.$==0)
-   void 0;
-  else
-   throw new MatchFailureException.New("RuntimeClient.fs",47,8);
-  this.allVars=c.$0;
+  this.allVars=c.$==0?c.$0:Operators.FailWith("Should not happen");
  },TemplateInstance);
  WebSharper$JQueryTerminal$Tests_Templates.form=function(h)
  {
@@ -1029,13 +1008,13 @@ if (!console) {
    $0:"form"
   },function()
   {
-   return $.parseHTML("<div class=\"form-class\">\r\n    <input type=\"text\" id=\"sample1\" placeholder=\"MyProject\" ws-var=\"ProjName\" ws-attr=\"EventProp\">\r\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainSelect\" data-upgraded=\",MaterialSelectfield\">\r\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\r\n                                <option value=\"clientserverfsharp\">Client-Server Application F#\r\n                                </option><option value=\"spafsharp\">Single Page Application F#\r\n                                </option><option value=\"extensionfsharp\">Extension F#\r\n                                </option><option value=\"libraryfsharp\">Library F#\r\n                                </option><option value=\"offlinefsharp\">HTML Application F#\r\n                                </option><option value=\"owinfsharp\">Owin F#\r\n                                </option><option value=\"clientserverfsharp\">Client-Server Application C#\r\n                                </option><option value=\"spacsharp\">Single Page Application C#\r\n                                </option><option value=\"librarycsharp\">Library C#\r\n                                </option><option value=\"offlinecsharp\">HTML Application C#\r\n                            </option></select>\r\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Available templates</label>\r\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Client-Server Application F#\r\n                                </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Client-Server Application F#\r\n                                </li><li class=\"\" data-value=\"1\" tabindex=\"-1\">Single Page Application F#\r\n                                </li><li class=\"\" data-value=\"2\" tabindex=\"-1\">Extension F#\r\n                                </li><li class=\"\" data-value=\"3\" tabindex=\"-1\">Library F#\r\n                                </li><li class=\"\" data-value=\"4\" tabindex=\"-1\">HTML Application F#\r\n                                </li><li class=\"\" data-value=\"5\" tabindex=\"-1\">Owin F#\r\n                                </li><li class=\"\" data-value=\"6\" tabindex=\"-1\">Client-Server Application C#\r\n                                </li><li class=\"\" data-value=\"7\" tabindex=\"-1\">Single Page Application C#\r\n                                </li><li class=\"\" data-value=\"8\" tabindex=\"-1\">Library C#\r\n                                </li><li class=\"\" data-value=\"9\" tabindex=\"-1\">HTML Application C#\r\n                            </li></ul></div></div>\r\n\r\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainIdeSelect\" data-upgraded=\",MaterialSelectfield\">\r\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\r\n                                <option value=\"vs2017\">Visual Studio 2017\r\n                            </option></select>\r\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Your IDE</label>\r\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Visual Studio 2017\r\n                            </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Visual Studio 2017\r\n                            </li></ul></div></div>\r\n\r\n    <div class=\"social-button-group\">\r\n                            <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-button\" data-upgraded=\",MaterialButton\" ws-onclick=\"Download\">\r\n                                Download\r\n                            </button>\r\n                        </div>\r\n</div>");
+   return $.parseHTML("<div class=\"form-class\">\n    <input type=\"text\" id=\"sample1\" placeholder=\"MyProject\" ws-var=\"ProjName\" ws-attr=\"EventProp\">\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainSelect\" data-upgraded=\",MaterialSelectfield\">\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\n                                <option value=\"clientserverfsharp\">Client-Server Application F#\n                                </option><option value=\"spafsharp\">Single Page Application F#\n                                </option><option value=\"extensionfsharp\">Extension F#\n                                </option><option value=\"libraryfsharp\">Library F#\n                                </option><option value=\"offlinefsharp\">HTML Application F#\n                                </option><option value=\"owinfsharp\">Owin F#\n                                </option><option value=\"clientserverfsharp\">Client-Server Application C#\n                                </option><option value=\"spacsharp\">Single Page Application C#\n                                </option><option value=\"librarycsharp\">Library C#\n                                </option><option value=\"offlinecsharp\">HTML Application C#\n                            </option></select>\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Available templates</label>\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Client-Server Application F#\n                                </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Client-Server Application F#\n                                </li><li class=\"\" data-value=\"1\" tabindex=\"-1\">Single Page Application F#\n                                </li><li class=\"\" data-value=\"2\" tabindex=\"-1\">Extension F#\n                                </li><li class=\"\" data-value=\"3\" tabindex=\"-1\">Library F#\n                                </li><li class=\"\" data-value=\"4\" tabindex=\"-1\">HTML Application F#\n                                </li><li class=\"\" data-value=\"5\" tabindex=\"-1\">Owin F#\n                                </li><li class=\"\" data-value=\"6\" tabindex=\"-1\">Client-Server Application C#\n                                </li><li class=\"\" data-value=\"7\" tabindex=\"-1\">Single Page Application C#\n                                </li><li class=\"\" data-value=\"8\" tabindex=\"-1\">Library C#\n                                </li><li class=\"\" data-value=\"9\" tabindex=\"-1\">HTML Application C#\n                            </li></ul></div></div>\n\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainIdeSelect\" data-upgraded=\",MaterialSelectfield\">\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\n                                <option value=\"vs2017\">Visual Studio 2017\n                            </option></select>\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Your IDE</label>\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Visual Studio 2017\n                            </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Visual Studio 2017\n                            </li></ul></div></div>\n\n    <div class=\"social-button-group\">\n                            <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-button\" data-upgraded=\",MaterialButton\" ws-onclick=\"Download\">\n                                Download\n                            </button>\n                        </div>\n</div>");
   },h):Doc.PrepareTemplate("template",{
    $:1,
    $0:"form"
   },function()
   {
-   return $.parseHTML("<div class=\"form-class\">\r\n    <input type=\"text\" id=\"sample1\" placeholder=\"MyProject\" ws-var=\"ProjName\" ws-attr=\"EventProp\">\r\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainSelect\" data-upgraded=\",MaterialSelectfield\">\r\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\r\n                                <option value=\"clientserverfsharp\">Client-Server Application F#\r\n                                </option><option value=\"spafsharp\">Single Page Application F#\r\n                                </option><option value=\"extensionfsharp\">Extension F#\r\n                                </option><option value=\"libraryfsharp\">Library F#\r\n                                </option><option value=\"offlinefsharp\">HTML Application F#\r\n                                </option><option value=\"owinfsharp\">Owin F#\r\n                                </option><option value=\"clientserverfsharp\">Client-Server Application C#\r\n                                </option><option value=\"spacsharp\">Single Page Application C#\r\n                                </option><option value=\"librarycsharp\">Library C#\r\n                                </option><option value=\"offlinecsharp\">HTML Application C#\r\n                            </option></select>\r\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Available templates</label>\r\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Client-Server Application F#\r\n                                </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Client-Server Application F#\r\n                                </li><li class=\"\" data-value=\"1\" tabindex=\"-1\">Single Page Application F#\r\n                                </li><li class=\"\" data-value=\"2\" tabindex=\"-1\">Extension F#\r\n                                </li><li class=\"\" data-value=\"3\" tabindex=\"-1\">Library F#\r\n                                </li><li class=\"\" data-value=\"4\" tabindex=\"-1\">HTML Application F#\r\n                                </li><li class=\"\" data-value=\"5\" tabindex=\"-1\">Owin F#\r\n                                </li><li class=\"\" data-value=\"6\" tabindex=\"-1\">Client-Server Application C#\r\n                                </li><li class=\"\" data-value=\"7\" tabindex=\"-1\">Single Page Application C#\r\n                                </li><li class=\"\" data-value=\"8\" tabindex=\"-1\">Library C#\r\n                                </li><li class=\"\" data-value=\"9\" tabindex=\"-1\">HTML Application C#\r\n                            </li></ul></div></div>\r\n\r\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainIdeSelect\" data-upgraded=\",MaterialSelectfield\">\r\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\r\n                                <option value=\"vs2017\">Visual Studio 2017\r\n                            </option></select>\r\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Your IDE</label>\r\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Visual Studio 2017\r\n                            </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Visual Studio 2017\r\n                            </li></ul></div></div>\r\n\r\n    <div class=\"social-button-group\">\r\n                            <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-button\" data-upgraded=\",MaterialButton\" ws-onclick=\"Download\">\r\n                                Download\r\n                            </button>\r\n                        </div>\r\n</div>");
+   return $.parseHTML("<div class=\"form-class\">\n    <input type=\"text\" id=\"sample1\" placeholder=\"MyProject\" ws-var=\"ProjName\" ws-attr=\"EventProp\">\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainSelect\" data-upgraded=\",MaterialSelectfield\">\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\n                                <option value=\"clientserverfsharp\">Client-Server Application F#\n                                </option><option value=\"spafsharp\">Single Page Application F#\n                                </option><option value=\"extensionfsharp\">Extension F#\n                                </option><option value=\"libraryfsharp\">Library F#\n                                </option><option value=\"offlinefsharp\">HTML Application F#\n                                </option><option value=\"owinfsharp\">Owin F#\n                                </option><option value=\"clientserverfsharp\">Client-Server Application C#\n                                </option><option value=\"spacsharp\">Single Page Application C#\n                                </option><option value=\"librarycsharp\">Library C#\n                                </option><option value=\"offlinecsharp\">HTML Application C#\n                            </option></select>\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Available templates</label>\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Client-Server Application F#\n                                </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Client-Server Application F#\n                                </li><li class=\"\" data-value=\"1\" tabindex=\"-1\">Single Page Application F#\n                                </li><li class=\"\" data-value=\"2\" tabindex=\"-1\">Extension F#\n                                </li><li class=\"\" data-value=\"3\" tabindex=\"-1\">Library F#\n                                </li><li class=\"\" data-value=\"4\" tabindex=\"-1\">HTML Application F#\n                                </li><li class=\"\" data-value=\"5\" tabindex=\"-1\">Owin F#\n                                </li><li class=\"\" data-value=\"6\" tabindex=\"-1\">Client-Server Application C#\n                                </li><li class=\"\" data-value=\"7\" tabindex=\"-1\">Single Page Application C#\n                                </li><li class=\"\" data-value=\"8\" tabindex=\"-1\">Library C#\n                                </li><li class=\"\" data-value=\"9\" tabindex=\"-1\">HTML Application C#\n                            </li></ul></div></div>\n\n    <div class=\"mdl-selectfield mdl-js-selectfield is-dirty\" id=\"plainIdeSelect\" data-upgraded=\",MaterialSelectfield\">\n                            <select id=\"myselect\" name=\"myselect\" class=\"mdl-selectfield__select\" style=\"opacity: 0; z-index: -1;\">\n                                <option value=\"vs2017\">Visual Studio 2017\n                            </option></select>\n                            <label class=\"mdl-selectfield__label\" for=\"myselect\">Your IDE</label>\n                        <div class=\"mdl-selectfield__box\" tabindex=\"1\"><span tabindex=\"-1\" class=\"mdl-selectfield__arrow-down__container\"><span class=\"mdl-selectfield__arrow-down\" tabindex=\"-1\"></span></span><span class=\"mdl-selectfield__box-value\" tabindex=\"-1\">Visual Studio 2017\n                            </span></div><div class=\"mdl-selectfield__list-option-box\" tabindex=\"-1\"><ul tabindex=\"-1\"><li class=\"is-selected\" data-value=\"0\" tabindex=\"-1\">Visual Studio 2017\n                            </li></ul></div></div>\n\n    <div class=\"social-button-group\">\n                            <button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-button\" data-upgraded=\",MaterialButton\" ws-onclick=\"Download\">\n                                Download\n                            </button>\n                        </div>\n</div>");
   });
  };
  ConcreteVar=UI.ConcreteVar=Runtime$1.Class({
@@ -1388,6 +1367,231 @@ if (!console) {
   var m;
   m=snap.s;
   m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
+ };
+ AttrModule.Handler=function(name,callback)
+ {
+  return Attrs.Static(function(el)
+  {
+   el.addEventListener(name,function(d)
+   {
+    return(callback(el))(d);
+   },false);
+  });
+ };
+ AttrModule.OnAfterRender=function(callback)
+ {
+  return new AttrProxy({
+   $:4,
+   $0:callback
+  });
+ };
+ AttrModule.Value=function(_var)
+ {
+  function g(a)
+  {
+   return{
+    $:1,
+    $0:a
+   };
+  }
+  return AttrModule.CustomValue(_var,Global.id,function(x)
+  {
+   return g(Global.id(x));
+  });
+ };
+ AttrModule.Checked=function(_var)
+ {
+  function onSet(el,ev)
+  {
+   return!Unchecked.Equals(_var.Get(),el.checked)?_var.Set(el.checked):null;
+  }
+  return AttrProxy.Concat([AttrModule.DynamicProp("checked",_var.get_View()),AttrModule.Handler("change",function($1)
+  {
+   return function($2)
+   {
+    return onSet($1,$2);
+   };
+  }),AttrModule.Handler("click",function($1)
+  {
+   return function($2)
+   {
+    return onSet($1,$2);
+   };
+  })]);
+ };
+ AttrModule.IntValue=function(_var)
+ {
+  return AttrModule.CustomVar(_var,function($1,$2)
+  {
+   var i;
+   i=$2.get_Input();
+   return $1.value!==i?void($1.value=i):null;
+  },function(el)
+  {
+   var s,m,o;
+   s=el.value;
+   return{
+    $:1,
+    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
+     $:2,
+     $0:s
+    }):new CheckedInput({
+     $:1,
+     $0:s
+    }):(m=(o=0,[Numeric.TryParseInt32(s,{
+     get:function()
+     {
+      return o;
+     },
+     set:function(v)
+     {
+      o=v;
+     }
+    }),o]),m[0]?new CheckedInput({
+     $:0,
+     $0:m[1],
+     $1:s
+    }):new CheckedInput({
+     $:1,
+     $0:s
+    }))
+   };
+  });
+ };
+ AttrModule.IntValueUnchecked=function(_var)
+ {
+  return AttrModule.CustomValue(_var,Global.String,function(s)
+  {
+   var pd;
+   return String.isBlank(s)?{
+    $:1,
+    $0:0
+   }:(pd=+s,pd!==pd>>0?null:{
+    $:1,
+    $0:pd
+   });
+  });
+ };
+ AttrModule.FloatValue=function(_var)
+ {
+  return AttrModule.CustomVar(_var,function($1,$2)
+  {
+   var i;
+   i=$2.get_Input();
+   return $1.value!==i?void($1.value=i):null;
+  },function(el)
+  {
+   var s,i;
+   s=el.value;
+   return{
+    $:1,
+    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
+     $:2,
+     $0:s
+    }):new CheckedInput({
+     $:1,
+     $0:s
+    }):(i=+s,Global.isNaN(i)?new CheckedInput({
+     $:1,
+     $0:s
+    }):new CheckedInput({
+     $:0,
+     $0:i,
+     $1:s
+    }))
+   };
+  });
+ };
+ AttrModule.FloatValueUnchecked=function(_var)
+ {
+  return AttrModule.CustomValue(_var,Global.String,function(s)
+  {
+   var pd;
+   return String.isBlank(s)?{
+    $:1,
+    $0:0
+   }:(pd=+s,Global.isNaN(pd)?null:{
+    $:1,
+    $0:pd
+   });
+  });
+ };
+ AttrModule.Dynamic=function(name,view)
+ {
+  return Attrs.Dynamic(view,function(el)
+  {
+   return function(v)
+   {
+    return DomUtility.SetAttr(el,name,v);
+   };
+  });
+ };
+ AttrModule.CustomValue=function(_var,toString,fromString)
+ {
+  return AttrModule.CustomVar(_var,function($1,$2)
+  {
+   $1.value=toString($2);
+  },function(e)
+  {
+   return fromString(e.value);
+  });
+ };
+ AttrModule.DynamicProp=function(name,view)
+ {
+  return Attrs.Dynamic(view,function(el)
+  {
+   return function(v)
+   {
+    el[name]=v;
+   };
+  });
+ };
+ AttrModule.CustomVar=function(_var,set,get)
+ {
+  function onChange(el,e)
+  {
+   return _var.UpdateMaybe(function(v)
+   {
+    var m,$1;
+    m=get(el);
+    return m!=null&&m.$==1&&(!Unchecked.Equals(m.$0,v)&&($1=[m,m.$0],true))?$1[0]:null;
+   });
+  }
+  function set$1(e,v)
+  {
+   var m,$1;
+   m=get(e);
+   return m!=null&&m.$==1&&(Unchecked.Equals(m.$0,v)&&($1=m.$0,true))?null:set(e,v);
+  }
+  return AttrProxy.Concat([AttrModule.Handler("change",function($1)
+  {
+   return function($2)
+   {
+    return onChange($1,$2);
+   };
+  }),AttrModule.Handler("input",function($1)
+  {
+   return function($2)
+   {
+    return onChange($1,$2);
+   };
+  }),AttrModule.Handler("keypress",function($1)
+  {
+   return function($2)
+   {
+    return onChange($1,$2);
+   };
+  }),AttrModule.DynamicCustom(function($1)
+  {
+   return function($2)
+   {
+    return set$1($1,$2);
+   };
+  },_var.get_View())]);
+ };
+ AttrModule.DynamicCustom=function(set,view)
+ {
+  return Attrs.Dynamic(view,set);
  };
  Array.ofSeqNonCopying=function(xs)
  {
@@ -1943,11 +2147,6 @@ if (!console) {
     e.Dispose();
   }
  };
- MatchFailureException=WebSharper.MatchFailureException=Runtime$1.Class({},null,MatchFailureException);
- MatchFailureException.New=Runtime$1.Ctor(function(message,line,column)
- {
-  this.message=message+" at "+Global.String(line)+":"+Global.String(column);
- },MatchFailureException);
  Pervasives.NewFromSeq=function(fields)
  {
   var r,e,f;
@@ -2791,7 +2990,7 @@ if (!console) {
    },$1?$1.$0:void 0)
   },["Render"]);
   updates=Array.TreeReduce(View.Const(),View.Map2Unit,updates$1);
-  return els&&Arrays.length(els)===1&&(Arrays.get(els,0)instanceof Node&&(Unchecked.Equals(Arrays.get(els,0).nodeType,Node.ELEMENT_NODE)&&($2=Arrays.get(els,0),true)))?Elt.TreeNode(docTreeNode,updates):Doc.Mk({
+  return!Unchecked.Equals(els,null)&&els.length===1&&(Arrays.get(els,0)instanceof Node&&(Unchecked.Equals(Arrays.get(els,0).nodeType,Node.ELEMENT_NODE)&&($2=Arrays.get(els,0),true)))?Elt.TreeNode(docTreeNode,updates):Doc.Mk({
    $:6,
    $0:docTreeNode
   },updates);
@@ -3702,231 +3901,6 @@ if (!console) {
    return this.$==1?this.$0:this.$==2?this.$0:this.$1;
   }
  },null,CheckedInput);
- AttrModule.Handler=function(name,callback)
- {
-  return Attrs.Static(function(el)
-  {
-   el.addEventListener(name,function(d)
-   {
-    return(callback(el))(d);
-   },false);
-  });
- };
- AttrModule.OnAfterRender=function(callback)
- {
-  return new AttrProxy({
-   $:4,
-   $0:callback
-  });
- };
- AttrModule.Value=function(_var)
- {
-  function g(a)
-  {
-   return{
-    $:1,
-    $0:a
-   };
-  }
-  return AttrModule.CustomValue(_var,Global.id,function(x)
-  {
-   return g(Global.id(x));
-  });
- };
- AttrModule.Checked=function(_var)
- {
-  function onSet(el,ev)
-  {
-   return!Unchecked.Equals(_var.Get(),el.checked)?_var.Set(el.checked):null;
-  }
-  return AttrProxy.Concat([AttrModule.DynamicProp("checked",_var.get_View()),AttrModule.Handler("change",function($1)
-  {
-   return function($2)
-   {
-    return onSet($1,$2);
-   };
-  }),AttrModule.Handler("click",function($1)
-  {
-   return function($2)
-   {
-    return onSet($1,$2);
-   };
-  })]);
- };
- AttrModule.IntValue=function(_var)
- {
-  return AttrModule.CustomVar(_var,function($1,$2)
-  {
-   var i;
-   i=$2.get_Input();
-   return $1.value!==i?void($1.value=i):null;
-  },function(el)
-  {
-   var s,m,o;
-   s=el.value;
-   return{
-    $:1,
-    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
-     $:2,
-     $0:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }):(m=(o=0,[Numeric.TryParseInt32(s,{
-     get:function()
-     {
-      return o;
-     },
-     set:function(v)
-     {
-      o=v;
-     }
-    }),o]),m[0]?new CheckedInput({
-     $:0,
-     $0:m[1],
-     $1:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }))
-   };
-  });
- };
- AttrModule.IntValueUnchecked=function(_var)
- {
-  return AttrModule.CustomValue(_var,Global.String,function(s)
-  {
-   var pd;
-   return String.isBlank(s)?{
-    $:1,
-    $0:0
-   }:(pd=+s,pd!==pd>>0?null:{
-    $:1,
-    $0:pd
-   });
-  });
- };
- AttrModule.FloatValue=function(_var)
- {
-  return AttrModule.CustomVar(_var,function($1,$2)
-  {
-   var i;
-   i=$2.get_Input();
-   return $1.value!==i?void($1.value=i):null;
-  },function(el)
-  {
-   var s,i;
-   s=el.value;
-   return{
-    $:1,
-    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
-     $:2,
-     $0:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }):(i=+s,Global.isNaN(i)?new CheckedInput({
-     $:1,
-     $0:s
-    }):new CheckedInput({
-     $:0,
-     $0:i,
-     $1:s
-    }))
-   };
-  });
- };
- AttrModule.FloatValueUnchecked=function(_var)
- {
-  return AttrModule.CustomValue(_var,Global.String,function(s)
-  {
-   var pd;
-   return String.isBlank(s)?{
-    $:1,
-    $0:0
-   }:(pd=+s,Global.isNaN(pd)?null:{
-    $:1,
-    $0:pd
-   });
-  });
- };
- AttrModule.Dynamic=function(name,view)
- {
-  return Attrs.Dynamic(view,function(el)
-  {
-   return function(v)
-   {
-    return DomUtility.SetAttr(el,name,v);
-   };
-  });
- };
- AttrModule.CustomValue=function(_var,toString,fromString)
- {
-  return AttrModule.CustomVar(_var,function($1,$2)
-  {
-   $1.value=toString($2);
-  },function(e)
-  {
-   return fromString(e.value);
-  });
- };
- AttrModule.DynamicProp=function(name,view)
- {
-  return Attrs.Dynamic(view,function(el)
-  {
-   return function(v)
-   {
-    el[name]=v;
-   };
-  });
- };
- AttrModule.CustomVar=function(_var,set,get)
- {
-  function onChange(el,e)
-  {
-   return _var.UpdateMaybe(function(v)
-   {
-    var m,$1;
-    m=get(el);
-    return m!=null&&m.$==1&&(!Unchecked.Equals(m.$0,v)&&($1=[m,m.$0],true))?$1[0]:null;
-   });
-  }
-  function set$1(e,v)
-  {
-   var m,$1;
-   m=get(e);
-   return m!=null&&m.$==1&&(Unchecked.Equals(m.$0,v)&&($1=m.$0,true))?null:set(e,v);
-  }
-  return AttrProxy.Concat([AttrModule.Handler("change",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.Handler("input",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.Handler("keypress",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.DynamicCustom(function($1)
-  {
-   return function($2)
-   {
-    return set$1($1,$2);
-   };
-  },_var.get_View())]);
- };
- AttrModule.DynamicCustom=function(set,view)
- {
-  return Attrs.Dynamic(view,set);
- };
  Elt=UI.Elt=Runtime$1.Class({},Doc,Elt);
  Elt.TreeNode=function(tree,updates)
  {

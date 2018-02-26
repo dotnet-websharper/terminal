@@ -1,0 +1,19 @@
+type file
+id WebSharper.JQueryTerminal
+authors
+    IntelliFactory
+owners
+    IntelliFactory
+licenseUrl http://websharper.com/licensing
+projectUrl https://bitbucket.org/IntelliFactory/websharper.terminal/overview
+description
+    WebSharper Extension for JQueryTerminal-1.5.3
+tags
+    Web JavaScript F# C#
+files
+    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.dll ==> lib/net461
+    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.xml ==> lib/net461
+    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.dll ==> lib/netstandard2.0
+    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.xml ==> lib/netstandard2.0
+dependencies
+        WebSharper ~> 4.2.3
