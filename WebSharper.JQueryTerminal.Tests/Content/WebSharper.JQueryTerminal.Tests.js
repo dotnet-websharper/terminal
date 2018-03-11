@@ -348,7 +348,7 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,Mailbox,SC$4,DocElemNode,CharacterData,Slice,Strings,Client$2,Docs$1,RunState,NodeSet,An,HashSetUtil,Attrs$1,Dyn,SC$5,CheckedInput,Elt,Concurrency,Anims,AppendList,String,Updates,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,Mailbox,SC$4,DocElemNode,CharacterData,Slice,Strings,Client$2,Docs$1,RunState,NodeSet,An,HashSetUtil,Attrs$1,Dyn,SC$5,CheckedInput,Elt,Concurrency,Anims,AppendList,Settings,String,Updates,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
  Global=window;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
@@ -419,6 +419,7 @@ if (!console) {
  Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
  Anims=UI.Anims=UI.Anims||{};
  AppendList=UI.AppendList=UI.AppendList||{};
+ Settings=Client$2.Settings=Client$2.Settings||{};
  String=UI.String=UI.String||{};
  Updates=UI.Updates=UI.Updates||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
@@ -3442,10 +3443,10 @@ if (!console) {
     ok();
    });
   }
-  return Concurrency.FromContinuations(function($1,$2,$3)
+  return Settings.BatchUpdatesEnabled()?Concurrency.FromContinuations(function($1,$2,$3)
   {
    return a.apply(null,[$1,$2,$3]);
-  });
+  }):(Docs.SyncElemNode(st.Top),Concurrency.Return(null));
  };
  Docs.InsertBeforeDelim=function(afterDelim,doc)
  {
@@ -3891,6 +3892,7 @@ if (!console) {
  SC$5.$cctor=function()
  {
   SC$5.$cctor=Global.ignore;
+  SC$5.BatchUpdatesEnabled=true;
   SC$5.LoadedTemplates=new Dictionary.New$5();
   SC$5.LocalTemplatesLoaded=false;
   SC$5.TextHoleRE="\\${([^}]+)}";
@@ -4201,6 +4203,11 @@ if (!console) {
  {
   SC$8.$cctor();
   return SC$8.Empty;
+ };
+ Settings.BatchUpdatesEnabled=function()
+ {
+  SC$5.$cctor();
+  return SC$5.BatchUpdatesEnabled;
  };
  String.isBlank=function(s)
  {
