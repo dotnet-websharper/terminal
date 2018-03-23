@@ -348,7 +348,7 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,Mailbox,SC$4,DocElemNode,CharacterData,Slice,Strings,Client$2,Docs$1,RunState,NodeSet,An,HashSetUtil,Attrs$1,Dyn,SC$5,CheckedInput,Elt,Concurrency,Anims,AppendList,Settings,String,Updates,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,SC$4,DocElemNode,CharacterData,Slice,Strings,Mailbox,HashSetUtil,Client$2,Attrs$1,Dyn,SC$5,Elt,Docs$1,RunState,NodeSet,An,CheckedInput,Updates,Concurrency,Anims,AppendList,Settings,String,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
  Global=window;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
@@ -399,29 +399,29 @@ if (!console) {
  SC$2=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
  Docs=UI.Docs=UI.Docs||{};
  SC$3=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
- Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
  SC$4=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
  DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
  CharacterData=Global.CharacterData;
  Slice=WebSharper.Slice=WebSharper.Slice||{};
  Strings=WebSharper.Strings=WebSharper.Strings||{};
+ Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
+ HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  Client$2=UI.Client=UI.Client||{};
+ Attrs$1=Client$2.Attrs=Client$2.Attrs||{};
+ Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
+ SC$5=Global.StartupCode$WebSharper_UI$Doc_Client=Global.StartupCode$WebSharper_UI$Doc_Client||{};
+ Elt=UI.Elt=UI.Elt||{};
  Docs$1=Client$2.Docs=Client$2.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
  An=UI.An=UI.An||{};
- HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
- Attrs$1=Client$2.Attrs=Client$2.Attrs||{};
- Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
- SC$5=Global.StartupCode$WebSharper_UI$Doc_Client=Global.StartupCode$WebSharper_UI$Doc_Client||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
- Elt=UI.Elt=UI.Elt||{};
+ Updates=UI.Updates=UI.Updates||{};
  Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
  Anims=UI.Anims=UI.Anims||{};
  AppendList=UI.AppendList=UI.AppendList||{};
  Settings=Client$2.Settings=Client$2.Settings||{};
  String=UI.String=UI.String||{};
- Updates=UI.Updates=UI.Updates||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
  SC$6=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
  CT=Concurrency.CT=Concurrency.CT||{};
@@ -1202,6 +1202,23 @@ if (!console) {
    $1:[]
   }),(Snap.When(sn1,cont,res),Snap.When(sn2,cont,res),res));
  };
+ Snap.Copy=function(sn)
+ {
+  var m,res,res$1;
+  m=sn.s;
+  return m==null?sn:m!=null&&m.$==2?(res=Snap.New({
+   $:2,
+   $0:m.$0,
+   $1:[]
+  }),(Snap.WhenObsolete(sn,res),res)):m!=null&&m.$==3?(res$1=Snap.New({
+   $:3,
+   $0:[],
+   $1:[]
+  }),(Snap.When(sn,function(v)
+  {
+   Snap.MarkDone(res$1,sn,v);
+  },res$1),res$1)):sn;
+ };
  Snap.WhenObsoleteRun=function(snap,obs)
  {
   var m;
@@ -1323,22 +1340,11 @@ if (!console) {
    return fn(x,y);
   },sn1);
  };
- Snap.Copy=function(sn)
+ Snap.WhenObsolete=function(snap,obs)
  {
-  var m,res,res$1;
-  m=sn.s;
-  return m==null?sn:m!=null&&m.$==2?(res=Snap.New({
-   $:2,
-   $0:m.$0,
-   $1:[]
-  }),(Snap.WhenObsolete(sn,res),res)):m!=null&&m.$==3?(res$1=Snap.New({
-   $:3,
-   $0:[],
-   $1:[]
-  }),(Snap.When(sn,function(v)
-  {
-   Snap.MarkDone(res$1,sn,v);
-  },res$1),res$1)):sn;
+  var m;
+  m=snap.s;
+  m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
  };
  Snap.EnqueueSafe=function(q,x)
  {
@@ -1362,12 +1368,6 @@ if (!console) {
    }
   else
    void 0;
- };
- Snap.WhenObsolete=function(snap,obs)
- {
-  var m;
-  m=snap.s;
-  m==null?Snap.Obsolete(obs):m!=null&&m.$==2?Snap.EnqueueSafe(m.$1,obs):m!=null&&m.$==3?Snap.EnqueueSafe(m.$1,obs):void 0;
  };
  AttrModule.Handler=function(name,callback)
  {
@@ -2192,16 +2192,14 @@ if (!console) {
      m=el.parentNode;
      Unchecked.Equals(m,null)?void 0:m.removeChild(el);
     }
-    Doc.PrepareTemplateStrict(baseName,name,els$1);
+    Doc.PrepareTemplateStrict(baseName,name,els$1,null);
    }
  };
  Doc.Run=function(parent,doc)
  {
-  var d;
   Doc.LoadLocalTemplates$1();
-  d=doc.docNode;
-  Docs.LinkElement(parent,d);
-  View.Sink(Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(Docs.CreateRunState(parent,d),d)),doc.updates);
+  Docs.LinkElement(parent,doc.docNode);
+  Doc.RunInPlace(parent,doc);
  };
  Doc.LoadLocalTemplates$1=function()
  {
@@ -2226,7 +2224,7 @@ if (!console) {
   }),o]);
   return m[0]?Doc.ChildrenTemplate(m[1].cloneNode(true),fillWith):(console.warn("Local template doesn't exist",name),Doc.Empty());
  };
- Doc.PrepareTemplateStrict=function(baseName,name,els)
+ Doc.PrepareTemplateStrict=function(baseName,name,els,root)
  {
   var fakeroot,name$1;
   function convertAttrs(el)
@@ -2631,10 +2629,16 @@ if (!console) {
   {
    return recF(1,p,n);
   }
-  fakeroot=Doc.FakeRoot(els);
+  fakeroot=root!=null&&root.$==1?root.$0:Doc.FakeRoot(els);
   name$1=(name==null?"":name.$0).toLowerCase();
   Docs.LoadedTemplateFile(baseName).set_Item(name$1,fakeroot);
   Arrays.length(els)>0?convert(fakeroot,Arrays.get(els,0)):void 0;
+ };
+ Doc.RunInPlace=function(parent,doc)
+ {
+  var d;
+  d=doc.docNode;
+  View.Sink(Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(Docs.CreateRunState(parent,d),d)),doc.updates);
  };
  Doc.LoadLocalTemplates=function(baseName)
  {
@@ -2680,12 +2684,43 @@ if (!console) {
  };
  Doc.ChildrenTemplate=function(el,fillWith)
  {
-  var els,docTreeNode,$1,updates,$2,holes,updates$1,attrs,afterRender,fw,e,x;
+  var p,updates,docTreeNode,m,$1;
+  p=Doc.InlineTemplate(el,fillWith);
+  updates=p[1];
+  docTreeNode=p[0];
+  m=docTreeNode.Els;
+  return!Unchecked.Equals(m,null)&&m.length===1&&(Arrays.get(m,0)instanceof Node&&(Unchecked.Equals(Arrays.get(m,0).nodeType,Node.ELEMENT_NODE)&&($1=Arrays.get(m,0),true)))?Elt.TreeNode(docTreeNode,updates):Doc.Mk({
+   $:6,
+   $0:docTreeNode
+  },updates);
+ };
+ Doc.Empty=function()
+ {
+  return Doc.Mk(null,View.Const());
+ };
+ Doc.PrepareSingleTemplate=function(baseName,name,el)
+ {
+  var m,m$1,n;
+  el.removeAttribute("ws-template");
+  m=el.getAttribute("ws-replace");
+  m===null?void 0:(el.removeAttribute("ws-replace"),m$1=el.parentNode,Unchecked.Equals(m$1,null)?void 0:(n=Global.document.createElement(el.tagName),n.setAttribute("ws-replace",m),m$1.replaceChild(n,el)));
+  Doc.PrepareTemplateStrict(baseName,name,[el],null);
+ };
+ Doc.FakeRoot=function(els)
+ {
+  var fakeroot,i,$1;
+  fakeroot=Global.document.createElement("div");
+  for(i=0,$1=els.length-1;i<=$1;i++)fakeroot.appendChild(Arrays.get(els,i));
+  return fakeroot;
+ };
+ Doc.InlineTemplate=function(el,fillWith)
+ {
+  var els,$1,holes,updates,attrs,afterRender,fw,e,x;
   function addAttr(el$1,attr)
   {
    var attr$1,o,f;
    attr$1=Attrs.Insert(el$1,attr);
-   updates$1.push(Attrs.Updates(attr$1));
+   updates.push(Attrs.Updates(attr$1));
    attrs.push([el$1,attr$1]);
    o=Runtime$1.GetOptional(attr$1.OnAfterRender);
    return o==null?null:(f=o.$0,void afterRender.push(function()
@@ -2742,7 +2777,7 @@ if (!console) {
    }:(console.warn("Content hole filled with attribute data",name),null):null;
   }
   holes=[];
-  updates$1=[];
+  updates=[];
   attrs=[];
   afterRender=[];
   fw=new Dictionary.New$5();
@@ -2769,7 +2804,7 @@ if (!console) {
    while(p.hasChildNodes())
     p.removeChild(p.lastChild);
    m=tryGetAsDoc(name);
-   m!=null&&m.$==1?(doc=m.$0,Docs.LinkElement(p,doc.docNode),holes.push(DocElemNode.New(Attrs.Empty(p),doc.docNode,null,p,Fresh.Int(),null)),updates$1.push(doc.updates)):void 0;
+   m!=null&&m.$==1?(doc=m.$0,Docs.LinkElement(p,doc.docNode),holes.push(DocElemNode.New(Attrs.Empty(p),doc.docNode,null,p,Fresh.Int(),null)),updates.push(doc.updates)):void 0;
   });
   DomUtility.IterSelector(el,"[ws-replace]",function(e$1)
   {
@@ -2781,7 +2816,7 @@ if (!console) {
    },els),o==null?void 0:Arrays.set(els,o.$0,doc.docNode),holes.push(DocElemNode.New(Attrs.Empty(p),doc.docNode,{
     $:1,
     $0:[before,after]
-   },p,Fresh.Int(),null)),updates$1.push(doc.updates)):void 0;
+   },p,Fresh.Int(),null)),updates.push(doc.updates)):void 0;
   });
   DomUtility.IterSelector(el,"[ws-attr]",function(e$1)
   {
@@ -2861,13 +2896,13 @@ if (!console) {
   });
   DomUtility.IterSelector(el,"[ws-attr-holes]",function(e$1)
   {
-   var re,holeAttrs,i,$3;
+   var re,holeAttrs,i,$2;
    re=new Global.RegExp(Docs.TextHoleRE(),"g");
    holeAttrs=Strings.SplitChars(e$1.getAttribute("ws-attr-holes"),[" "],1);
    e$1.removeAttribute("ws-attr-holes");
-   for(i=0,$3=holeAttrs.length-1;i<=$3;i++)(function()
+   for(i=0,$2=holeAttrs.length-1;i<=$2;i++)(function()
    {
-    var m,lastIndex,$4,finalText,value,s,s$1,s$2,s$3,attrName,s$4,res,textBefore;
+    var m,lastIndex,$3,finalText,value,s,s$1,s$2,s$3,attrName,s$4,res,textBefore;
     attrName=Arrays.get(holeAttrs,i);
     s$4=e$1.getAttribute(attrName);
     m=null;
@@ -2890,7 +2925,7 @@ if (!console) {
      $0:lastIndex
     },null);
     re.lastIndex=0;
-    value=Arrays.foldBack(function($5,$6)
+    value=Arrays.foldBack(function($4,$5)
     {
      return(function(t)
      {
@@ -2957,7 +2992,7 @@ if (!console) {
         $1:views
        })]:[textBefore$1+holeContent.$0+textAfter,views];
       };
-     }($5))($6);
+     }($4))($5);
     },res,[finalText,T.Empty]);
     return addAttr(e$1,value[1].$==1?value[1].$1.$==1?value[1].$1.$1.$==1?value[1].$1.$1.$1.$==0?(s=value[0],AttrModule.Dynamic(attrName,View.Map3(function(v1,v2,v3)
     {
@@ -2974,7 +3009,7 @@ if (!console) {
     },value[1].$0))):AttrProxy.Create(attrName,value[0]));
    }());
   });
-  docTreeNode=Runtime$1.DeleteEmptyFields({
+  return[Runtime$1.DeleteEmptyFields({
    Els:els,
    Dirty:true,
    Holes:holes,
@@ -2989,31 +3024,11 @@ if (!console) {
      },afterRender);
     }
    },$1?$1.$0:void 0)
-  },["Render"]);
-  updates=Array.TreeReduce(View.Const(),View.Map2Unit,updates$1);
-  return!Unchecked.Equals(els,null)&&els.length===1&&(Arrays.get(els,0)instanceof Node&&(Unchecked.Equals(Arrays.get(els,0).nodeType,Node.ELEMENT_NODE)&&($2=Arrays.get(els,0),true)))?Elt.TreeNode(docTreeNode,updates):Doc.Mk({
-   $:6,
-   $0:docTreeNode
-  },updates);
+  },["Render"]),Array.TreeReduce(View.Const(),View.Map2Unit,updates)];
  };
- Doc.Empty=function()
+ Doc.Mk=function(node,updates)
  {
-  return Doc.Mk(null,View.Const());
- };
- Doc.PrepareSingleTemplate=function(baseName,name,el)
- {
-  var m,m$1,n;
-  el.removeAttribute("ws-template");
-  m=el.getAttribute("ws-replace");
-  m===null?void 0:(el.removeAttribute("ws-replace"),m$1=el.parentNode,Unchecked.Equals(m$1,null)?void 0:(n=Global.document.createElement(el.tagName),n.setAttribute("ws-replace",m),m$1.replaceChild(n,el)));
-  Doc.PrepareTemplateStrict(baseName,name,[el]);
- };
- Doc.FakeRoot=function(els)
- {
-  var fakeroot,i,$1;
-  fakeroot=Global.document.createElement("div");
-  for(i=0,$1=els.length-1;i<=$1;i++)fakeroot.appendChild(Arrays.get(els,i));
-  return fakeroot;
+  return new Doc.New(node,updates);
  };
  Doc.TextNode=function(v)
  {
@@ -3033,10 +3048,6 @@ if (!console) {
   {
    Docs.UpdateTextNode(node,t);
   },txt));
- };
- Doc.Mk=function(node,updates)
- {
-  return new Doc.New(node,updates);
  };
  Doc.New=Runtime$1.Ctor(function(docNode,updates)
  {
@@ -3264,6 +3275,12 @@ if (!console) {
   for(i=0,$1=element.childNodes.length-1;i<=$1;i++)a.push(element.childNodes[i]);
   return a;
  };
+ DomUtility.InsertAt=function(parent,pos,node)
+ {
+  var m;
+  if(!(node.parentNode===parent&&pos===(m=node.nextSibling,Unchecked.Equals(m,null)?null:m)))
+   parent.insertBefore(node,pos);
+ };
  DomUtility.CreateText=function(s)
  {
   return DomUtility.Doc().createTextNode(s);
@@ -3271,12 +3288,6 @@ if (!console) {
  DomUtility.SetAttr=function(el,name,value)
  {
   el.setAttribute(name,value);
- };
- DomUtility.InsertAt=function(parent,pos,node)
- {
-  var m;
-  if(!(node.parentNode===parent&&pos===(m=node.nextSibling,Unchecked.Equals(m,null)?null:m)))
-   parent.insertBefore(node,pos);
  };
  DomUtility.RemoveNode=function(parent,el)
  {
@@ -3336,32 +3347,6 @@ if (!console) {
  {
   Docs.InsertDoc(el,children,null);
  };
- Docs.CreateRunState=function(parent,doc)
- {
-  return RunState.New(NodeSet.get_Empty(),Docs.CreateElemNode(parent,Attrs.EmptyAttr(),doc));
- };
- Docs.PerformAnimatedUpdate=function(st,doc)
- {
-  var b;
-  return An.get_UseAnimations()?(b=null,Concurrency.Delay(function()
-  {
-   var cur,change,enter;
-   cur=NodeSet.FindAll(doc);
-   change=Docs.ComputeChangeAnim(st,cur);
-   enter=Docs.ComputeEnterAnim(st,cur);
-   return Concurrency.Bind(An.Play(An.Append(change,Docs.ComputeExitAnim(st,cur))),function()
-   {
-    return Concurrency.Bind(Docs.SyncElemNodesNextFrame(st),function()
-    {
-     return Concurrency.Bind(An.Play(enter),function()
-     {
-      st.PreviousNodes=cur;
-      return Concurrency.Return(null);
-     });
-    });
-   });
-  })):Docs.SyncElemNodesNextFrame(st);
- };
  Docs.LocalTemplatesLoaded=function()
  {
   SC$5.$cctor();
@@ -3389,6 +3374,37 @@ if (!console) {
   {
    return $1.constructor===Object?Docs.InsertDoc(parent,$1,$2):Docs.InsertNode(parent,$1,$2);
   },doc.$0.Els,pos):Docs.InsertDoc(parent,doc.$0,Docs.InsertDoc(parent,doc.$1,pos));
+ };
+ Docs.CreateRunState=function(parent,doc)
+ {
+  return RunState.New(NodeSet.get_Empty(),Docs.CreateElemNode(parent,Attrs.EmptyAttr(),doc));
+ };
+ Docs.PerformAnimatedUpdate=function(st,doc)
+ {
+  var b;
+  return An.get_UseAnimations()?(b=null,Concurrency.Delay(function()
+  {
+   var cur,change,enter;
+   cur=NodeSet.FindAll(doc);
+   change=Docs.ComputeChangeAnim(st,cur);
+   enter=Docs.ComputeEnterAnim(st,cur);
+   return Concurrency.Bind(An.Play(An.Append(change,Docs.ComputeExitAnim(st,cur))),function()
+   {
+    return Concurrency.Bind(Docs.SyncElemNodesNextFrame(st),function()
+    {
+     return Concurrency.Bind(An.Play(enter),function()
+     {
+      st.PreviousNodes=cur;
+      return Concurrency.Return(null);
+     });
+    });
+   });
+  })):Docs.SyncElemNodesNextFrame(st);
+ };
+ Docs.InsertNode=function(parent,node,pos)
+ {
+  DomUtility.InsertAt(parent,pos,node);
+  return node;
  };
  Docs.CreateElemNode=function(el,attr,children)
  {
@@ -3456,11 +3472,6 @@ if (!console) {
   p.insertBefore(before,afterDelim);
   Docs.LinkPrevElement(afterDelim,doc);
   return before;
- };
- Docs.InsertNode=function(parent,node,pos)
- {
-  DomUtility.InsertAt(parent,pos,node);
-  return node;
  };
  Docs.SyncElemNode=function(el)
  {
@@ -3568,109 +3579,6 @@ if (!console) {
   SC$3.$cctor=Global.ignore;
   SC$3.Doc=Global.document;
  };
- Mailbox.StartProcessor=function(procAsync)
- {
-  var st;
-  function work()
-  {
-   var b;
-   b=null;
-   return Concurrency.Delay(function()
-   {
-    return Concurrency.Bind(procAsync,function()
-    {
-     var m;
-     m=st[0];
-     return m===1?(st[0]=0,Concurrency.Zero()):m===2?(st[0]=1,work()):Concurrency.Zero();
-    });
-   });
-  }
-  st=[0];
-  return function()
-  {
-   var m;
-   m=st[0];
-   m===0?(st[0]=1,Concurrency.Start(work(),null)):m===1?st[0]=2:void 0;
-  };
- };
- View.Sink=function(act,a)
- {
-  function loop()
-  {
-   Snap.WhenRun(a(),act,function()
-   {
-    Concurrency.scheduler().Fork(loop);
-   });
-  }
-  Concurrency.scheduler().Fork(loop);
- };
- View.Map=function(fn,a)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Map(fn,a());
-  });
- };
- View.Map3=function(fn,a,a$1,a$2)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Map3(fn,a(),a$1(),a$2());
-  });
- };
- View.Sequence=function(views)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Sequence(Seq.map(function(a)
-   {
-    return a();
-   },views));
-  });
- };
- View.Map2=function(fn,a,a$1)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Map2(fn,a(),a$1());
-  });
- };
- View.Const=function(x)
- {
-  var o;
-  o=Snap.New({
-   $:0,
-   $0:x
-  });
-  return function()
-  {
-   return o;
-  };
- };
- View.Map2Unit=function(a,a$1)
- {
-  return View.CreateLazy(function()
-  {
-   return Snap.Map2Unit(a(),a$1());
-  });
- };
- View.CreateLazy=function(observe)
- {
-  var lv;
-  lv={
-   c:null,
-   o:observe
-  };
-  return function()
-  {
-   var c,$1;
-   c=lv.c;
-   return c===null?(c=lv.o(),lv.c=c,($1=c.s,$1!=null&&$1.$==0)?lv.o=null:Snap.WhenObsoleteRun(c,function()
-   {
-    lv.c=null;
-   }),c):c;
-  };
- };
  SC$4.$cctor=function()
  {
   SC$4.$cctor=Global.ignore;
@@ -3723,18 +3631,172 @@ if (!console) {
    return x!=="";
   },Strings.SplitWith(s,pat)):Strings.SplitWith(s,pat);
  };
- Strings.forall=function(f,s)
- {
-  return Seq.forall(f,Strings.protect(s));
- };
  Strings.SplitWith=function(str,pat)
  {
   return str.split(pat);
+ };
+ Strings.forall=function(f,s)
+ {
+  return Seq.forall(f,Strings.protect(s));
  };
  Strings.protect=function(s)
  {
   return s===null?"":s;
  };
+ Mailbox.StartProcessor=function(procAsync)
+ {
+  var st;
+  function work()
+  {
+   var b;
+   b=null;
+   return Concurrency.Delay(function()
+   {
+    return Concurrency.Bind(procAsync,function()
+    {
+     var m;
+     m=st[0];
+     return m===1?(st[0]=0,Concurrency.Zero()):m===2?(st[0]=1,work()):Concurrency.Zero();
+    });
+   });
+  }
+  st=[0];
+  return function()
+  {
+   var m;
+   m=st[0];
+   m===0?(st[0]=1,Concurrency.Start(work(),null)):m===1?st[0]=2:void 0;
+  };
+ };
+ View.Sink=function(act,a)
+ {
+  function loop()
+  {
+   Snap.WhenRun(a(),act,function()
+   {
+    Concurrency.scheduler().Fork(loop);
+   });
+  }
+  Concurrency.scheduler().Fork(loop);
+ };
+ View.Const=function(x)
+ {
+  var o;
+  o=Snap.New({
+   $:0,
+   $0:x
+  });
+  return function()
+  {
+   return o;
+  };
+ };
+ View.Map=function(fn,a)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Map(fn,a());
+  });
+ };
+ View.Map3=function(fn,a,a$1,a$2)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Map3(fn,a(),a$1(),a$2());
+  });
+ };
+ View.Sequence=function(views)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Sequence(Seq.map(function(a)
+   {
+    return a();
+   },views));
+  });
+ };
+ View.Map2=function(fn,a,a$1)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Map2(fn,a(),a$1());
+  });
+ };
+ View.Map2Unit=function(a,a$1)
+ {
+  return View.CreateLazy(function()
+  {
+   return Snap.Map2Unit(a(),a$1());
+  });
+ };
+ View.CreateLazy=function(observe)
+ {
+  var lv;
+  lv={
+   c:null,
+   o:observe
+  };
+  return function()
+  {
+   var c,$1;
+   c=lv.c;
+   return c===null?(c=lv.o(),lv.c=c,($1=c.s,$1!=null&&$1.$==0)?lv.o=null:Snap.WhenObsoleteRun(c,function()
+   {
+    lv.c=null;
+   }),c):c;
+  };
+ };
+ HashSetUtil.concat=function(o)
+ {
+  var r,k;
+  r=[];
+  for(var k$1 in o)r.push.apply(r,o[k$1]);
+  return r;
+ };
+ Dyn.New=function(DynElem,DynFlags,DynNodes,OnAfterRender)
+ {
+  var $1;
+  $1={
+   DynElem:DynElem,
+   DynFlags:DynFlags,
+   DynNodes:DynNodes
+  };
+  Runtime$1.SetOptional($1,"OnAfterRender",OnAfterRender);
+  return $1;
+ };
+ SC$5.$cctor=function()
+ {
+  SC$5.$cctor=Global.ignore;
+  SC$5.BatchUpdatesEnabled=true;
+  SC$5.LoadedTemplates=new Dictionary.New$5();
+  SC$5.LocalTemplatesLoaded=false;
+  SC$5.TextHoleRE="\\${([^}]+)}";
+ };
+ Elt=UI.Elt=Runtime$1.Class({},Doc,Elt);
+ Elt.TreeNode=function(tree,updates)
+ {
+  var rvUpdates,x;
+  function f(t)
+  {
+   return t[1];
+  }
+  rvUpdates=Updates.Create(updates);
+  return new Elt.New$1({
+   $:6,
+   $0:tree
+  },View.Map2Unit((x=Arrays.map(function(x$1)
+  {
+   return Attrs.Updates(f(x$1));
+  },tree.Attrs),Array.TreeReduce(View.Const(),View.Map2Unit,x)),rvUpdates.v),Arrays.get(tree.Els,0),rvUpdates);
+ };
+ Elt.New$1=Runtime$1.Ctor(function(docNode,updates,elt,rvUpdates)
+ {
+  Doc.New.call(this,docNode,updates);
+  this.docNode$1=docNode;
+  this.updates$1=updates;
+  this.elt=elt;
+  this.rvUpdates=rvUpdates;
+ },Elt);
  RunState.New=function(PreviousNodes,Top)
  {
   return{
@@ -3871,63 +3933,36 @@ if (!console) {
    $0:AppendList.Empty()
   };
  };
- HashSetUtil.concat=function(o)
- {
-  var r,k;
-  r=[];
-  for(var k$1 in o)r.push.apply(r,o[k$1]);
-  return r;
- };
- Dyn.New=function(DynElem,DynFlags,DynNodes,OnAfterRender)
- {
-  var $1;
-  $1={
-   DynElem:DynElem,
-   DynFlags:DynFlags,
-   DynNodes:DynNodes
-  };
-  Runtime$1.SetOptional($1,"OnAfterRender",OnAfterRender);
-  return $1;
- };
- SC$5.$cctor=function()
- {
-  SC$5.$cctor=Global.ignore;
-  SC$5.BatchUpdatesEnabled=true;
-  SC$5.LoadedTemplates=new Dictionary.New$5();
-  SC$5.LocalTemplatesLoaded=false;
-  SC$5.TextHoleRE="\\${([^}]+)}";
- };
  CheckedInput=UI.CheckedInput=Runtime$1.Class({
   get_Input:function()
   {
    return this.$==1?this.$0:this.$==2?this.$0:this.$1;
   }
  },null,CheckedInput);
- Elt=UI.Elt=Runtime$1.Class({},Doc,Elt);
- Elt.TreeNode=function(tree,updates)
+ Updates=UI.Updates=Runtime$1.Class({},null,Updates);
+ Updates.Create=function(v)
  {
-  var rvUpdates,x;
-  function f(t)
+  var _var;
+  _var=null;
+  _var=Updates.New(v,null,function()
   {
-   return t[1];
-  }
-  rvUpdates=Updates.Create(updates);
-  return new Elt.New$1({
-   $:6,
-   $0:tree
-  },View.Map2Unit((x=Arrays.map(function(x$1)
-  {
-   return Attrs.Updates(f(x$1));
-  },tree.Attrs),Array.TreeReduce(View.Const(),View.Map2Unit,x)),rvUpdates.v),Arrays.get(tree.Els,0),rvUpdates);
+   var c;
+   c=_var.s;
+   return c===null?(c=Snap.Copy(_var.c()),_var.s=c,Snap.WhenObsoleteRun(c,function()
+   {
+    _var.s=null;
+   }),c):c;
+  });
+  return _var;
  };
- Elt.New$1=Runtime$1.Ctor(function(docNode,updates,elt,rvUpdates)
+ Updates.New=function(Current,Snap$1,VarView)
  {
-  Doc.New.call(this,docNode,updates);
-  this.docNode$1=docNode;
-  this.updates$1=updates;
-  this.elt=elt;
-  this.rvUpdates=rvUpdates;
- },Elt);
+  return new Updates({
+   c:Current,
+   s:Snap$1,
+   v:VarView
+  });
+ };
  Concurrency.Delay=function(mk)
  {
   return function(c)
@@ -4212,30 +4247,6 @@ if (!console) {
  String.isBlank=function(s)
  {
   return Strings.forall(Char.IsWhiteSpace,s);
- };
- Updates=UI.Updates=Runtime$1.Class({},null,Updates);
- Updates.Create=function(v)
- {
-  var _var;
-  _var=null;
-  _var=Updates.New(v,null,function()
-  {
-   var c;
-   c=_var.s;
-   return c===null?(c=Snap.Copy(_var.c()),_var.s=c,Snap.WhenObsoleteRun(c,function()
-   {
-    _var.s=null;
-   }),c):c;
-  });
-  return _var;
- };
- Updates.New=function(Current,Snap$1,VarView)
- {
-  return new Updates({
-   c:Current,
-   s:Snap$1,
-   v:VarView
-  });
  };
  AsyncBody.New=function(k,ct)
  {
