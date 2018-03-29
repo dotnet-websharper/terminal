@@ -348,7 +348,7 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,SC$4,DocElemNode,CharacterData,Slice,Strings,Mailbox,HashSetUtil,Client$2,Attrs$1,Dyn,SC$5,Elt,Docs$1,RunState,NodeSet,An,CheckedInput,Updates,Concurrency,Anims,AppendList,Settings,String,AsyncBody,SC$6,CT,SC$7,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,Easing,OperationCanceledException,SC$8,Lazy,DomNodes,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Unchecked,System,Guid,Obj,List,T,Arrays,AttrProxy,JavaScript,JSModule,Templating,Runtime,Server,Handler,TemplateInstance,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,AttrModule,Array,Collections,Dictionary,HashSet,Client$1,Seq,Pervasives,Doc,Abbrev,Fresh,Attrs,Object,DictionaryUtil,Enumerator,T$1,EventTarget,Node,DomUtility,View,Numeric,SC$2,Docs,SC$3,SC$4,DocElemNode,CharacterData,Slice,Strings,An,Client$2,Settings,Mailbox,HashSetUtil,Attrs$1,Dyn,SC$5,Elt,Docs$1,RunState,NodeSet,Anims,CheckedInput,Updates,SC$6,Concurrency,AppendList,String,Easing,AsyncBody,SC$7,CT,HashSet$1,Char,DynamicAttrNode,Scheduler,CancellationTokenSource,DomNodes,OperationCanceledException,SC$8,Lazy,LazyExtensionsProxy,LazyRecord,Queue,Math,IntelliFactory,Runtime$1,$,console,Date;
  Global=window;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
@@ -404,9 +404,11 @@ if (!console) {
  CharacterData=Global.CharacterData;
  Slice=WebSharper.Slice=WebSharper.Slice||{};
  Strings=WebSharper.Strings=WebSharper.Strings||{};
+ An=UI.An=UI.An||{};
+ Client$2=UI.Client=UI.Client||{};
+ Settings=Client$2.Settings=Client$2.Settings||{};
  Mailbox=Abbrev.Mailbox=Abbrev.Mailbox||{};
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
- Client$2=UI.Client=UI.Client||{};
  Attrs$1=Client$2.Attrs=Client$2.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  SC$5=Global.StartupCode$WebSharper_UI$Doc_Client=Global.StartupCode$WebSharper_UI$Doc_Client||{};
@@ -414,28 +416,26 @@ if (!console) {
  Docs$1=Client$2.Docs=Client$2.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
- An=UI.An=UI.An||{};
+ Anims=UI.Anims=UI.Anims||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
  Updates=UI.Updates=UI.Updates||{};
+ SC$6=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  Concurrency=WebSharper.Concurrency=WebSharper.Concurrency||{};
- Anims=UI.Anims=UI.Anims||{};
  AppendList=UI.AppendList=UI.AppendList||{};
- Settings=Client$2.Settings=Client$2.Settings||{};
  String=UI.String=UI.String||{};
+ Easing=UI.Easing=UI.Easing||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
- SC$6=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
+ SC$7=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
  CT=Concurrency.CT=Concurrency.CT||{};
- SC$7=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
  Char=WebSharper.Char=WebSharper.Char||{};
  DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
  Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
- Easing=UI.Easing=UI.Easing||{};
+ DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  SC$8=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
  Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
- DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
  LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
  LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
  Queue=WebSharper.Queue=WebSharper.Queue||{};
@@ -536,7 +536,7 @@ if (!console) {
    return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?(Client.set_numOfTemplates(Client.numOfTemplates()+1),id="template"+Global.String(Client.numOfTemplates()),rvProjName=Var.Create$1(""),html=(p=(t=($3=(c=Guid.NewGuid(),Global.String(c)),($4=new T({
     $:1,
     $0:{
-     $:7,
+     $:8,
      $0:"projname",
      $1:rvProjName
     },
@@ -951,15 +951,15 @@ if (!console) {
   {
    var p,r,r$1,r$2;
    return filledVars.Contains(name)?null:(p=ty===0?(r=Var.Create$1(""),[{
-    $:7,
+    $:8,
     $0:name,
     $1:r
    },r]):ty===1?(r$1=Var.Create$1(0),[{
-    $:12,
+    $:13,
     $0:name,
     $1:r$1
    },r$1]):ty===2?(r$2=Var.Create$1(false),[{
-    $:8,
+    $:9,
     $0:name,
     $1:r$2
    },r$2]):Operators.FailWith("Invalid value type"),(allVars.set_Item(name,p[1]),{
@@ -975,7 +975,7 @@ if (!console) {
    while(e.MoveNext())
     {
      h=e.Current();
-     (h.$==7?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==10?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==9?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==12?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==11?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==8&&($1=[h.$0,Client$1.Box(h.$1)],true))?(n=$1[0],filledVars.Add(n),allVars.set_Item(n,$1[1])):void 0;
+     (h.$==8?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==11?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==10?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==13?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==12?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==9&&($1=[h.$0,Client$1.Box(h.$1)],true))?(n=$1[0],filledVars.Add(n),allVars.set_Item(n,$1[1])):void 0;
     }
   }
   finally
@@ -2199,7 +2199,7 @@ if (!console) {
  {
   Doc.LoadLocalTemplates$1();
   Docs.LinkElement(parent,doc.docNode);
-  Doc.RunInPlace(parent,doc);
+  Doc.RunInPlace(false,parent,doc);
  };
  Doc.LoadLocalTemplates$1=function()
  {
@@ -2634,11 +2634,14 @@ if (!console) {
   Docs.LoadedTemplateFile(baseName).set_Item(name$1,fakeroot);
   Arrays.length(els)>0?convert(fakeroot,Arrays.get(els,0)):void 0;
  };
- Doc.RunInPlace=function(parent,doc)
+ Doc.RunInPlace=function(childrenOnly,parent,doc)
  {
-  var d;
-  d=doc.docNode;
-  View.Sink(Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(Docs.CreateRunState(parent,d),d)),doc.updates);
+  var st;
+  st=Docs.CreateRunState(parent,doc.docNode);
+  View.Sink(An.get_UseAnimations()||Settings.BatchUpdatesEnabled()?Mailbox.StartProcessor(Docs.PerformAnimatedUpdate(childrenOnly,st,doc.docNode)):function()
+  {
+   Docs.PerformSyncUpdate(childrenOnly,st,doc.docNode);
+  },doc.updates);
  };
  Doc.LoadLocalTemplates=function(baseName)
  {
@@ -2718,12 +2721,12 @@ if (!console) {
   var els,$1,holes,updates,attrs,afterRender,fw,e,x;
   function addAttr(el$1,attr)
   {
-   var attr$1,o,f;
+   var attr$1,m,f;
    attr$1=Attrs.Insert(el$1,attr);
    updates.push(Attrs.Updates(attr$1));
    attrs.push([el$1,attr$1]);
-   o=Runtime$1.GetOptional(attr$1.OnAfterRender);
-   return o==null?null:(f=o.$0,void afterRender.push(function()
+   m=Runtime$1.GetOptional(attr$1.OnAfterRender);
+   return m==null?null:(f=m.$0,void afterRender.push(function()
    {
     f(el$1);
    }));
@@ -2750,28 +2753,28 @@ if (!console) {
    }:m[1].$==2?{
     $:1,
     $0:Doc.TextView(m[1].$1)
-   }:m[1].$==7?{
-    $:1,
-    $0:Doc.TextView(m[1].$1.get_View())
    }:m[1].$==8?{
     $:1,
-    $0:Doc.TextView(View.Map(Global.String,m[1].$1.get_View()))
+    $0:Doc.TextView(m[1].$1.get_View())
    }:m[1].$==9?{
     $:1,
-    $0:Doc.TextView(View.Map(function(i)
-    {
-     return i.get_Input();
-    },m[1].$1.get_View()))
+    $0:Doc.TextView(View.Map(Global.String,m[1].$1.get_View()))
    }:m[1].$==10?{
     $:1,
-    $0:Doc.TextView(View.Map(Global.String,m[1].$1.get_View()))
+    $0:Doc.TextView(View.Map(function(i)
+    {
+     return i.get_Input();
+    },m[1].$1.get_View()))
    }:m[1].$==11?{
+    $:1,
+    $0:Doc.TextView(View.Map(Global.String,m[1].$1.get_View()))
+   }:m[1].$==12?{
     $:1,
     $0:Doc.TextView(View.Map(function(i)
     {
      return i.get_Input();
     },m[1].$1.get_View()))
-   }:m[1].$==12?{
+   }:m[1].$==13?{
     $:1,
     $0:Doc.TextView(View.Map(Global.String,m[1].$1.get_View()))
    }:(console.warn("Content hole filled with attribute data",name),null):null;
@@ -2875,7 +2878,7 @@ if (!console) {
      o=v;
     }
    }),o]);
-   m[0]?m[1].$==6?(e$1.removeAttribute("ws-onafterrender"),addAttr(e$1,AttrModule.OnAfterRender(m[1].$1))):console.warn("onafterrender hole filled with non-onafterrender data",name):void 0;
+   m[0]?m[1].$==6?(e$1.removeAttribute("ws-onafterrender"),addAttr(e$1,AttrModule.OnAfterRender(m[1].$1))):m[1].$==7?(e$1.removeAttribute("ws-onafterrender"),addAttr(e$1,AttrModule.OnAfterRender(m[1].$1))):console.warn("onafterrender hole filled with non-onafterrender data",name):void 0;
   });
   DomUtility.IterSelector(el,"[ws-var]",function(e$1)
   {
@@ -2892,7 +2895,7 @@ if (!console) {
      o=v;
     }
    }),o]);
-   m[0]?m[1].$==7?addAttr(e$1,AttrModule.Value(m[1].$1)):m[1].$==8?addAttr(e$1,AttrModule.Checked(m[1].$1)):m[1].$==9?addAttr(e$1,AttrModule.IntValue(m[1].$1)):m[1].$==10?addAttr(e$1,AttrModule.IntValueUnchecked(m[1].$1)):m[1].$==11?addAttr(e$1,AttrModule.FloatValue(m[1].$1)):m[1].$==12?addAttr(e$1,AttrModule.FloatValueUnchecked(m[1].$1)):console.warn("Var hole filled with non-Var data",name):void 0;
+   m[0]?m[1].$==8?addAttr(e$1,AttrModule.Value(m[1].$1)):m[1].$==9?addAttr(e$1,AttrModule.Checked(m[1].$1)):m[1].$==10?addAttr(e$1,AttrModule.IntValue(m[1].$1)):m[1].$==11?addAttr(e$1,AttrModule.IntValueUnchecked(m[1].$1)):m[1].$==12?addAttr(e$1,AttrModule.FloatValue(m[1].$1)):m[1].$==13?addAttr(e$1,AttrModule.FloatValueUnchecked(m[1].$1)):console.warn("Var hole filled with non-Var data",name):void 0;
   });
   DomUtility.IterSelector(el,"[ws-attr-holes]",function(e$1)
   {
@@ -2952,28 +2955,28 @@ if (!console) {
        }:m$1[1].$==2?{
         $:1,
         $0:m$1[1].$1
-       }:m$1[1].$==7?{
-        $:1,
-        $0:m$1[1].$1.get_View()
        }:m$1[1].$==8?{
         $:1,
-        $0:View.Map(Global.String,m$1[1].$1.get_View())
+        $0:m$1[1].$1.get_View()
        }:m$1[1].$==9?{
         $:1,
-        $0:View.Map(function(i$1)
-        {
-         return i$1.get_Input();
-        },m$1[1].$1.get_View())
+        $0:View.Map(Global.String,m$1[1].$1.get_View())
        }:m$1[1].$==10?{
         $:1,
-        $0:View.Map(Global.String,m$1[1].$1.get_View())
+        $0:View.Map(function(i$1)
+        {
+         return i$1.get_Input();
+        },m$1[1].$1.get_View())
        }:m$1[1].$==11?{
+        $:1,
+        $0:View.Map(Global.String,m$1[1].$1.get_View())
+       }:m$1[1].$==12?{
         $:1,
         $0:View.Map(function(i$1)
         {
          return i$1.get_Input();
         },m$1[1].$1.get_View())
-       }:m$1[1].$==12?{
+       }:m$1[1].$==13?{
         $:1,
         $0:View.Map(Global.String,m$1[1].$1.get_View())
        }:(console.warn("Attribute value hole filled with non-text data",holeName),{
@@ -3379,7 +3382,7 @@ if (!console) {
  {
   return RunState.New(NodeSet.get_Empty(),Docs.CreateElemNode(parent,Attrs.EmptyAttr(),doc));
  };
- Docs.PerformAnimatedUpdate=function(st,doc)
+ Docs.PerformAnimatedUpdate=function(childrenOnly,st,doc)
  {
   var b;
   return An.get_UseAnimations()?(b=null,Concurrency.Delay(function()
@@ -3390,7 +3393,7 @@ if (!console) {
    enter=Docs.ComputeEnterAnim(st,cur);
    return Concurrency.Bind(An.Play(An.Append(change,Docs.ComputeExitAnim(st,cur))),function()
    {
-    return Concurrency.Bind(Docs.SyncElemNodesNextFrame(st),function()
+    return Concurrency.Bind(Docs.SyncElemNodesNextFrame(childrenOnly,st),function()
     {
      return Concurrency.Bind(An.Play(enter),function()
      {
@@ -3399,7 +3402,14 @@ if (!console) {
      });
     });
    });
-  })):Docs.SyncElemNodesNextFrame(st);
+  })):Docs.SyncElemNodesNextFrame(childrenOnly,st);
+ };
+ Docs.PerformSyncUpdate=function(childrenOnly,st,doc)
+ {
+  var cur;
+  cur=NodeSet.FindAll(doc);
+  Docs.SyncElemNode(childrenOnly,st.Top);
+  st.PreviousNodes=cur;
  };
  Docs.InsertNode=function(parent,node,pos)
  {
@@ -3449,20 +3459,26 @@ if (!console) {
    return Attrs.HasExitAnim(n.Attr);
   },st.PreviousNodes)))));
  };
- Docs.SyncElemNodesNextFrame=function(st)
+ Docs.SyncElemNodesNextFrame=function(childrenOnly,st)
  {
   function a(ok)
   {
    Global.requestAnimationFrame(function()
    {
-    Docs.SyncElemNode(st.Top);
+    Docs.SyncElemNode(childrenOnly,st.Top);
     ok();
    });
   }
   return Settings.BatchUpdatesEnabled()?Concurrency.FromContinuations(function($1,$2,$3)
   {
    return a.apply(null,[$1,$2,$3]);
-  }):(Docs.SyncElemNode(st.Top),Concurrency.Return(null));
+  }):(Docs.SyncElemNode(childrenOnly,st.Top),Concurrency.Return(null));
+ };
+ Docs.SyncElemNode=function(childrenOnly,el)
+ {
+  !childrenOnly?Docs.SyncElement(el):void 0;
+  Docs.Sync(el.Children);
+  Docs.AfterRender(el);
  };
  Docs.InsertBeforeDelim=function(afterDelim,doc)
  {
@@ -3472,29 +3488,6 @@ if (!console) {
   p.insertBefore(before,afterDelim);
   Docs.LinkPrevElement(afterDelim,doc);
   return before;
- };
- Docs.SyncElemNode=function(el)
- {
-  Docs.SyncElement(el);
-  Docs.Sync(el.Children);
-  Docs.AfterRender(el);
- };
- Docs.CreateTextNode=function()
- {
-  return{
-   Text:DomUtility.CreateText(""),
-   Dirty:false,
-   Value:""
-  };
- };
- Docs.UpdateTextNode=function(n,t)
- {
-  n.Value=t;
-  n.Dirty=true;
- };
- Docs.LinkPrevElement=function(el,children)
- {
-  Docs.InsertDoc(el.parentNode,children,el);
  };
  Docs.SyncElement=function(el)
  {
@@ -3514,7 +3507,7 @@ if (!console) {
  {
   var d,t;
   if(doc!=null&&doc.$==1)
-   Docs.SyncElemNode(doc.$0);
+   Docs.SyncElemNode(false,doc.$0);
   else
    if(doc!=null&&doc.$==2)
     Docs.Sync(doc.$0.Current);
@@ -3536,7 +3529,7 @@ if (!console) {
          t=doc.$0;
          Arrays.iter(function(e)
          {
-          Docs.SyncElemNode(e);
+          Docs.SyncElemNode(false,e);
          },t.Holes);
          Arrays.iter(function(t$1)
          {
@@ -3555,6 +3548,23 @@ if (!console) {
   var m;
   m=Runtime$1.GetOptional(el.Render);
   m!=null&&m.$==1?(m.$0(el.El),Runtime$1.SetOptional(el,"Render",null)):void 0;
+ };
+ Docs.CreateTextNode=function()
+ {
+  return{
+   Text:DomUtility.CreateText(""),
+   Dirty:false,
+   Value:""
+  };
+ };
+ Docs.UpdateTextNode=function(n,t)
+ {
+  n.Value=t;
+  n.Dirty=true;
+ };
+ Docs.LinkPrevElement=function(el,children)
+ {
+  Docs.InsertDoc(el.parentNode,children,el);
  };
  Docs.DoSyncElement=function(el)
  {
@@ -3642,6 +3652,76 @@ if (!console) {
  Strings.protect=function(s)
  {
   return s===null?"":s;
+ };
+ An.get_UseAnimations=function()
+ {
+  return Anims.UseAnimations();
+ };
+ An.Play=function(anim)
+ {
+  var b;
+  b=null;
+  return Concurrency.Delay(function()
+  {
+   return Concurrency.Bind(An.Run(Global.ignore,Anims.Actions(anim)),function()
+   {
+    Anims.Finalize(anim);
+    return Concurrency.Return(null);
+   });
+  });
+ };
+ An.Append=function(a,a$1)
+ {
+  return{
+   $:0,
+   $0:AppendList.Append(a.$0,a$1.$0)
+  };
+ };
+ An.Concat=function(xs)
+ {
+  return{
+   $:0,
+   $0:AppendList.Concat(Seq.map(Anims.List,xs))
+  };
+ };
+ An.Run=function(k,anim)
+ {
+  var dur;
+  function a(ok)
+  {
+   function loop(start,now)
+   {
+    var t;
+    t=now-start;
+    anim.Compute(t);
+    k();
+    return t<=dur?void Global.requestAnimationFrame(function(t$1)
+    {
+     loop(start,t$1);
+    }):ok();
+   }
+   Global.requestAnimationFrame(function(t)
+   {
+    loop(t,t);
+   });
+  }
+  dur=anim.Duration;
+  return dur===0?Concurrency.Zero():Concurrency.FromContinuations(function($1,$2,$3)
+  {
+   return a.apply(null,[$1,$2,$3]);
+  });
+ };
+ An.get_Empty=function()
+ {
+  return{
+   $:0,
+   $0:AppendList.Empty()
+  };
+ };
+ Settings.BatchUpdatesEnabled=function()
+ {
+  SC$5.$cctor();
+  return SC$5.BatchUpdatesEnabled;
  };
  Mailbox.StartProcessor=function(procAsync)
  {
@@ -3868,261 +3948,10 @@ if (!console) {
    $0:HashSet$1.Except(a.$0,a$1.$0)
   };
  };
- An.get_UseAnimations=function()
- {
-  return Anims.UseAnimations();
- };
- An.Play=function(anim)
- {
-  var b;
-  b=null;
-  return Concurrency.Delay(function()
-  {
-   return Concurrency.Bind(An.Run(Global.ignore,Anims.Actions(anim)),function()
-   {
-    Anims.Finalize(anim);
-    return Concurrency.Return(null);
-   });
-  });
- };
- An.Append=function(a,a$1)
- {
-  return{
-   $:0,
-   $0:AppendList.Append(a.$0,a$1.$0)
-  };
- };
- An.Concat=function(xs)
- {
-  return{
-   $:0,
-   $0:AppendList.Concat(Seq.map(Anims.List,xs))
-  };
- };
- An.Run=function(k,anim)
- {
-  var dur;
-  function a(ok)
-  {
-   function loop(start,now)
-   {
-    var t;
-    t=now-start;
-    anim.Compute(t);
-    k();
-    return t<=dur?void Global.requestAnimationFrame(function(t$1)
-    {
-     loop(start,t$1);
-    }):ok();
-   }
-   Global.requestAnimationFrame(function(t)
-   {
-    loop(t,t);
-   });
-  }
-  dur=anim.Duration;
-  return dur===0?Concurrency.Zero():Concurrency.FromContinuations(function($1,$2,$3)
-  {
-   return a.apply(null,[$1,$2,$3]);
-  });
- };
- An.get_Empty=function()
- {
-  return{
-   $:0,
-   $0:AppendList.Empty()
-  };
- };
- CheckedInput=UI.CheckedInput=Runtime$1.Class({
-  get_Input:function()
-  {
-   return this.$==1?this.$0:this.$==2?this.$0:this.$1;
-  }
- },null,CheckedInput);
- Updates=UI.Updates=Runtime$1.Class({},null,Updates);
- Updates.Create=function(v)
- {
-  var _var;
-  _var=null;
-  _var=Updates.New(v,null,function()
-  {
-   var c;
-   c=_var.s;
-   return c===null?(c=Snap.Copy(_var.c()),_var.s=c,Snap.WhenObsoleteRun(c,function()
-   {
-    _var.s=null;
-   }),c):c;
-  });
-  return _var;
- };
- Updates.New=function(Current,Snap$1,VarView)
- {
-  return new Updates({
-   c:Current,
-   s:Snap$1,
-   v:VarView
-  });
- };
- Concurrency.Delay=function(mk)
- {
-  return function(c)
-  {
-   try
-   {
-    (mk(null))(c);
-   }
-   catch(e)
-   {
-    c.k({
-     $:1,
-     $0:e
-    });
-   }
-  };
- };
- Concurrency.Bind=function(r,f)
- {
-  return Concurrency.checkCancel(function(c)
-  {
-   r(AsyncBody.New(function(a)
-   {
-    var x;
-    if(a.$==0)
-     {
-      x=a.$0;
-      Concurrency.scheduler().Fork(function()
-      {
-       try
-       {
-        (f(x))(c);
-       }
-       catch(e)
-       {
-        c.k({
-         $:1,
-         $0:e
-        });
-       }
-      });
-     }
-    else
-     Concurrency.scheduler().Fork(function()
-     {
-      c.k(a);
-     });
-   },c.ct));
-  });
- };
- Concurrency.Zero=function()
- {
-  SC$6.$cctor();
-  return SC$6.Zero;
- };
- Concurrency.Start=function(c,ctOpt)
- {
-  var ct,d;
-  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
-  Concurrency.scheduler().Fork(function()
-  {
-   if(!ct.c)
-    c(AsyncBody.New(function(a)
-    {
-     if(a.$==1)
-      Concurrency.UncaughtAsyncError(a.$0);
-    },ct));
-  });
- };
- Concurrency.Return=function(x)
- {
-  return function(c)
-  {
-   c.k({
-    $:0,
-    $0:x
-   });
-  };
- };
- Concurrency.checkCancel=function(r)
- {
-  return function(c)
-  {
-   if(c.ct.c)
-    Concurrency.cancel(c);
-   else
-    r(c);
-  };
- };
- Concurrency.defCTS=function()
- {
-  SC$6.$cctor();
-  return SC$6.defCTS;
- };
- Concurrency.UncaughtAsyncError=function(e)
- {
-  console.log("WebSharper: Uncaught asynchronous exception",e);
- };
- Concurrency.FromContinuations=function(subscribe)
- {
-  return function(c)
-  {
-   var continued;
-   function once(cont)
-   {
-    if(continued[0])
-     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
-    else
-     {
-      continued[0]=true;
-      Concurrency.scheduler().Fork(cont);
-     }
-   }
-   continued=[false];
-   subscribe(function(a)
-   {
-    once(function()
-    {
-     c.k({
-      $:0,
-      $0:a
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:1,
-      $0:e
-     });
-    });
-   },function(e)
-   {
-    once(function()
-    {
-     c.k({
-      $:2,
-      $0:e
-     });
-    });
-   });
-  };
- };
- Concurrency.cancel=function(c)
- {
-  c.k({
-   $:2,
-   $0:new OperationCanceledException.New(c.ct)
-  });
- };
- Concurrency.scheduler=function()
- {
-  SC$6.$cctor();
-  return SC$6.scheduler;
- };
  Anims.UseAnimations=function()
  {
-  SC$7.$cctor();
-  return SC$7.UseAnimations;
+  SC$6.$cctor();
+  return SC$6.UseAnimations;
  };
  Anims.Actions=function(a)
  {
@@ -4196,6 +4025,203 @@ if (!console) {
    Duration:d
   };
  };
+ CheckedInput=UI.CheckedInput=Runtime$1.Class({
+  get_Input:function()
+  {
+   return this.$==1?this.$0:this.$==2?this.$0:this.$1;
+  }
+ },null,CheckedInput);
+ Updates=UI.Updates=Runtime$1.Class({},null,Updates);
+ Updates.Create=function(v)
+ {
+  var _var;
+  _var=null;
+  _var=Updates.New(v,null,function()
+  {
+   var c;
+   c=_var.s;
+   return c===null?(c=Snap.Copy(_var.c()),_var.s=c,Snap.WhenObsoleteRun(c,function()
+   {
+    _var.s=null;
+   }),c):c;
+  });
+  return _var;
+ };
+ Updates.New=function(Current,Snap$1,VarView)
+ {
+  return new Updates({
+   c:Current,
+   s:Snap$1,
+   v:VarView
+  });
+ };
+ SC$6.$cctor=function()
+ {
+  SC$6.$cctor=Global.ignore;
+  SC$6.CubicInOut=Easing.Custom(function(t)
+  {
+   var t2;
+   t2=t*t;
+   return 3*t2-2*(t2*t);
+  });
+  SC$6.UseAnimations=true;
+ };
+ Concurrency.Delay=function(mk)
+ {
+  return function(c)
+  {
+   try
+   {
+    (mk(null))(c);
+   }
+   catch(e)
+   {
+    c.k({
+     $:1,
+     $0:e
+    });
+   }
+  };
+ };
+ Concurrency.Bind=function(r,f)
+ {
+  return Concurrency.checkCancel(function(c)
+  {
+   r(AsyncBody.New(function(a)
+   {
+    var x;
+    if(a.$==0)
+     {
+      x=a.$0;
+      Concurrency.scheduler().Fork(function()
+      {
+       try
+       {
+        (f(x))(c);
+       }
+       catch(e)
+       {
+        c.k({
+         $:1,
+         $0:e
+        });
+       }
+      });
+     }
+    else
+     Concurrency.scheduler().Fork(function()
+     {
+      c.k(a);
+     });
+   },c.ct));
+  });
+ };
+ Concurrency.Zero=function()
+ {
+  SC$7.$cctor();
+  return SC$7.Zero;
+ };
+ Concurrency.Start=function(c,ctOpt)
+ {
+  var ct,d;
+  ct=(d=(Concurrency.defCTS())[0],ctOpt==null?d:ctOpt.$0);
+  Concurrency.scheduler().Fork(function()
+  {
+   if(!ct.c)
+    c(AsyncBody.New(function(a)
+    {
+     if(a.$==1)
+      Concurrency.UncaughtAsyncError(a.$0);
+    },ct));
+  });
+ };
+ Concurrency.Return=function(x)
+ {
+  return function(c)
+  {
+   c.k({
+    $:0,
+    $0:x
+   });
+  };
+ };
+ Concurrency.checkCancel=function(r)
+ {
+  return function(c)
+  {
+   if(c.ct.c)
+    Concurrency.cancel(c);
+   else
+    r(c);
+  };
+ };
+ Concurrency.defCTS=function()
+ {
+  SC$7.$cctor();
+  return SC$7.defCTS;
+ };
+ Concurrency.UncaughtAsyncError=function(e)
+ {
+  console.log("WebSharper: Uncaught asynchronous exception",e);
+ };
+ Concurrency.FromContinuations=function(subscribe)
+ {
+  return function(c)
+  {
+   var continued;
+   function once(cont)
+   {
+    if(continued[0])
+     Operators.FailWith("A continuation provided by Async.FromContinuations was invoked multiple times");
+    else
+     {
+      continued[0]=true;
+      Concurrency.scheduler().Fork(cont);
+     }
+   }
+   continued=[false];
+   subscribe(function(a)
+   {
+    once(function()
+    {
+     c.k({
+      $:0,
+      $0:a
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:1,
+      $0:e
+     });
+    });
+   },function(e)
+   {
+    once(function()
+    {
+     c.k({
+      $:2,
+      $0:e
+     });
+    });
+   });
+  };
+ };
+ Concurrency.cancel=function(c)
+ {
+  c.k({
+   $:2,
+   $0:new OperationCanceledException.New(c.ct)
+  });
+ };
+ Concurrency.scheduler=function()
+ {
+  SC$7.$cctor();
+  return SC$7.scheduler;
+ };
  AppendList.Append=function(x,y)
  {
   return x.$==0?y:y.$==0?x:{
@@ -4239,15 +4265,19 @@ if (!console) {
   SC$8.$cctor();
   return SC$8.Empty;
  };
- Settings.BatchUpdatesEnabled=function()
- {
-  SC$5.$cctor();
-  return SC$5.BatchUpdatesEnabled;
- };
  String.isBlank=function(s)
  {
   return Strings.forall(Char.IsWhiteSpace,s);
  };
+ Easing=UI.Easing=Runtime$1.Class({},Obj,Easing);
+ Easing.Custom=function(f)
+ {
+  return new Easing.New(f);
+ };
+ Easing.New=Runtime$1.Ctor(function(transformTime)
+ {
+  this.transformTime=transformTime;
+ },Easing);
  AsyncBody.New=function(k,ct)
  {
   return{
@@ -4255,14 +4285,14 @@ if (!console) {
    ct:ct
   };
  };
- SC$6.$cctor=function()
+ SC$7.$cctor=function()
  {
-  SC$6.$cctor=Global.ignore;
-  SC$6.noneCT=CT.New(false,[]);
-  SC$6.scheduler=new Scheduler.New();
-  SC$6.defCTS=[new CancellationTokenSource.New()];
-  SC$6.Zero=Concurrency.Return();
-  SC$6.GetCT=function(c)
+  SC$7.$cctor=Global.ignore;
+  SC$7.noneCT=CT.New(false,[]);
+  SC$7.scheduler=new Scheduler.New();
+  SC$7.defCTS=[new CancellationTokenSource.New()];
+  SC$7.Zero=Concurrency.Return();
+  SC$7.GetCT=function(c)
   {
    c.k({
     $:0,
@@ -4276,17 +4306,6 @@ if (!console) {
    c:IsCancellationRequested,
    r:Registrations
   };
- };
- SC$7.$cctor=function()
- {
-  SC$7.$cctor=Global.ignore;
-  SC$7.CubicInOut=Easing.Custom(function(t)
-  {
-   var t2;
-   t2=t*t;
-   return 3*t2-2*(t2*t);
-  });
-  SC$7.UseAnimations=true;
  };
  HashSet$1.Filter=function(ok,set)
  {
@@ -4410,50 +4429,6 @@ if (!console) {
   this.r=[];
   this.init=1;
  },CancellationTokenSource);
- Easing=UI.Easing=Runtime$1.Class({},Obj,Easing);
- Easing.Custom=function(f)
- {
-  return new Easing.New(f);
- };
- Easing.New=Runtime$1.Ctor(function(transformTime)
- {
-  this.transformTime=transformTime;
- },Easing);
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},null,OperationCanceledException);
- OperationCanceledException.New=Runtime$1.Ctor(function(ct)
- {
-  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
- },OperationCanceledException);
- OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
- {
-  this.message=message;
-  this.inner=inner;
-  this.ct=ct;
- },OperationCanceledException);
- SC$8.$cctor=function()
- {
-  SC$8.$cctor=Global.ignore;
-  SC$8.Empty={
-   $:0
-  };
- };
- Lazy.Create=function(f)
- {
-  return LazyRecord.New(false,f,Lazy.forceLazy);
- };
- Lazy.forceLazy=function()
- {
-  var v;
-  v=this.v();
-  this.c=true;
-  this.v=v;
-  this.f=Lazy.cachedLazy;
-  return v;
- };
- Lazy.cachedLazy=function()
- {
-  return this.v;
- };
  DomNodes.DocChildren=function(node)
  {
   var q;
@@ -4539,6 +4514,41 @@ if (!console) {
  DomNodes.Iter=function(f,a)
  {
   Arrays.iter(f,a.$0);
+ };
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},null,OperationCanceledException);
+ OperationCanceledException.New=Runtime$1.Ctor(function(ct)
+ {
+  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
+ },OperationCanceledException);
+ OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
+ {
+  this.message=message;
+  this.inner=inner;
+  this.ct=ct;
+ },OperationCanceledException);
+ SC$8.$cctor=function()
+ {
+  SC$8.$cctor=Global.ignore;
+  SC$8.Empty={
+   $:0
+  };
+ };
+ Lazy.Create=function(f)
+ {
+  return LazyRecord.New(false,f,Lazy.forceLazy);
+ };
+ Lazy.forceLazy=function()
+ {
+  var v;
+  v=this.v();
+  this.c=true;
+  this.v=v;
+  this.f=Lazy.cachedLazy;
+  return v;
+ };
+ Lazy.cachedLazy=function()
+ {
+  return this.v;
  };
  LazyRecord.New=function(created,evalOrVal,force)
  {
