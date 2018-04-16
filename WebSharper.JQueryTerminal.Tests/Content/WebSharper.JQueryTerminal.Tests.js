@@ -1412,12 +1412,6 @@ if (!console) {
    {
     return onSet($1,$2);
    };
-  }),AttrModule.Handler("click",function($1)
-  {
-   return function($2)
-   {
-    return onSet($1,$2);
-   };
   })]);
  };
  AttrModule.IntValue=function(_var)
