@@ -255,6 +255,12 @@ IntelliFactory = {
             }
         },
 
+        ScriptBasePath: "./",
+
+        ScriptPath: function (a, f) {
+            return this.ScriptBasePath + (this.ScriptSkipAssemblyDir ? "" : a + "/") + f;
+        },
+
         OnLoad:
             function (f) {
                 if (!("load" in this)) {
@@ -279,14 +285,14 @@ IntelliFactory = {
 }
 
 IntelliFactory.Runtime.OnLoad(function () {
-    if (window.WebSharper && WebSharper.Activator && WebSharper.Activator.Activate)
+    if (self.WebSharper && WebSharper.Activator && WebSharper.Activator.Activate)
         WebSharper.Activator.Activate()
 });
 
 // Polyfill
 
 if (!Date.now) {
-    Date.now = function now() {
+    Date.now = function () {
         return new Date().getTime();
     };
 }
@@ -295,6 +301,13 @@ if (!Math.trunc) {
     Math.trunc = function (x) {
         return x < 0 ? Math.ceil(x) : Math.floor(x);
     }
+}
+
+if (!Object.setPrototypeOf) {
+  Object.setPrototypeOf = function (obj, proto) {
+    obj.__proto__ = proto;
+    return obj;
+  }
 }
 
 function ignore() { };
@@ -348,8 +361,8 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Obj,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,AttrProxy,List,Handler,JavaScript,JSModule,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,Client$1,Templates,Doc,Pervasives,Collections,List$1,Array,Unchecked,System,Guid,T,AttrModule,Dictionary,HashSet,Client$2,Seq,Abbrev,Fresh,EventTarget,Node,DomUtility,Object,Attrs,View,CheckedInput,Numeric,DictionaryUtil,Enumerator,T$1,SC$2,SC$3,Docs,SC$4,SC$5,Prepare,Slice,KeyCollection,DocElemNode,CharacterData,An,Settings,Mailbox,HashSetUtil,Strings,Attrs$1,Dyn,Docs$1,RunState,NodeSet,Anims,SC$6,Elt,SC$7,Concurrency,AppendList,Updates,Easing,AsyncBody,SC$8,CT,HashSet$1,String,Scheduler,CancellationTokenSource,DomNodes,Char,DynamicAttrNode,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,Queue,IntelliFactory,Runtime$1,$,console,Math,Date;
- Global=window;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Obj,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,AttrProxy,List,Handler,JavaScript,JS,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,Client$1,Templates,Doc,Pervasives,Collections,List$1,Array,Unchecked,System,Guid,T,AttrModule,Dictionary,HashSet,Client$2,Seq,Abbrev,Fresh,EventTarget,Node,DomUtility,Object,Attrs,View,CheckedInput,Numeric,DictionaryUtil,Enumerator,T$1,SC$2,WindowOrWorkerGlobalScope,SC$3,Docs,SC$4,SC$5,Prepare,Slice,KeyCollection,DocElemNode,CharacterData,An,Settings,Mailbox,HashSetUtil,Strings,Attrs$1,Dyn,Docs$1,RunState,NodeSet,Anims,SC$6,Elt,SC$7,Concurrency,AppendList,Updates,Easing,AsyncBody,SC$8,CT,HashSet$1,String,Scheduler,CancellationTokenSource,DomNodes,Char,DynamicAttrNode,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,Queue,IntelliFactory,Runtime$1,$,console,Math,Date;
+ Global=self;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
  SC$1=Global.StartupCode$WebSharper_JQueryTerminal_Tests$Client=Global.StartupCode$WebSharper_JQueryTerminal_Tests$Client||{};
@@ -368,7 +381,7 @@ if (!console) {
  List=WebSharper.List=WebSharper.List||{};
  Handler=Server.Handler=Server.Handler||{};
  JavaScript=WebSharper.JavaScript=WebSharper.JavaScript||{};
- JSModule=JavaScript.JSModule=JavaScript.JSModule||{};
+ JS=JavaScript.JS=JavaScript.JS||{};
  WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  Snap=UI.Snap=UI.Snap||{};
@@ -402,6 +415,7 @@ if (!console) {
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  T$1=Enumerator.T=Enumerator.T||{};
  SC$2=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
+ WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
  SC$3=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  Docs=UI.Docs=UI.Docs||{};
  SC$4=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
@@ -439,6 +453,7 @@ if (!console) {
  DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
  Char=WebSharper.Char=WebSharper.Char||{};
  DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
+ Error=Global.Error;
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
  SC$9=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
@@ -591,7 +606,7 @@ if (!console) {
  };
  Operators.FailWith=function(msg)
  {
-  throw Global.Error(msg);
+  throw new Error(msg);
  };
  Operators.KeyValue=function(kvp)
  {
@@ -615,6 +630,9 @@ if (!console) {
    return -1;
   }
  },null,Obj);
+ Obj.New=Runtime$1.Ctor(function()
+ {
+ },Obj);
  TemplateInstance=Server.TemplateInstance=Runtime$1.Class({
   get_Doc:function()
   {
@@ -623,6 +641,7 @@ if (!console) {
  },Obj,TemplateInstance);
  TemplateInstance.New=Runtime$1.Ctor(function(c,doc)
  {
+  Obj.New.call(this);
   this.doc=doc;
   this.allVars=c.$==0?c.$0:Operators.FailWith("Should not happen");
  },TemplateInstance);
@@ -786,7 +805,7 @@ if (!console) {
    $0:allVars
   }];
  };
- JSModule.GetFieldValues=function(o)
+ JS.GetFieldValues=function(o)
  {
   var r,k;
   r=[];
@@ -796,6 +815,7 @@ if (!console) {
  Var=UI.Var=Runtime$1.Class({},Obj,Var);
  Var.New=Runtime$1.Ctor(function()
  {
+  Obj.New.call(this);
  },Var);
  WebSharper$JQueryTerminal$Tests_Templates.form=function(h)
  {
@@ -1166,7 +1186,7 @@ if (!console) {
  };
  Templates.LoadLocalTemplates=function(baseName)
  {
-  !Templates.LocalTemplatesLoaded()?(Templates.set_LocalTemplatesLoaded(true),Templates.LoadNestedTemplates(Global.document.body,"")):void 0;
+  !Templates.LocalTemplatesLoaded()?(Templates.set_LocalTemplatesLoaded(true),Templates.LoadNestedTemplates(self.document.body,"")):void 0;
   Templates.LoadedTemplates().set_Item(baseName,Templates.LoadedTemplateFile(""));
  };
  Templates.LocalTemplatesLoaded=function()
@@ -1274,13 +1294,13 @@ if (!console) {
   var m,m$1,n;
   el.removeAttribute("ws-template");
   m=el.getAttribute("ws-replace");
-  m===null?void 0:(el.removeAttribute("ws-replace"),m$1=el.parentNode,Unchecked.Equals(m$1,null)?void 0:(n=Global.document.createElement(el.tagName),n.setAttribute("ws-replace",m),m$1.replaceChild(n,el)));
+  m===null?void 0:(el.removeAttribute("ws-replace"),m$1=el.parentNode,Unchecked.Equals(m$1,null)?void 0:(n=self.document.createElement(el.tagName),n.setAttribute("ws-replace",m),m$1.replaceChild(n,el)));
   return Templates.FakeRoot([el]);
  };
  Templates.FakeRoot=function(els)
  {
   var fakeroot,i,$1;
-  fakeroot=Global.document.createElement("div");
+  fakeroot=self.document.createElement("div");
   for(i=0,$1=els.length-1;i<=$1;i++)fakeroot.appendChild(Arrays.get(els,i));
   return fakeroot;
  };
@@ -1627,7 +1647,7 @@ if (!console) {
   {
    var m,doc,p,after,before,o;
    m=tryGetAsDoc(e$1.getAttribute("ws-replace"));
-   m!=null&&m.$==1?(doc=m.$0,p=e$1.parentNode,after=Global.document.createTextNode(""),p.replaceChild(after,e$1),before=Docs.InsertBeforeDelim(after,doc.docNode),o=Arrays.tryFindIndex(function(y)
+   m!=null&&m.$==1?(doc=m.$0,p=e$1.parentNode,after=self.document.createTextNode(""),p.replaceChild(after,e$1),before=Docs.InsertBeforeDelim(after,doc.docNode),o=Arrays.tryFindIndex(function(y)
    {
     return e$1===y;
    },els),o==null?void 0:Arrays.set(els,o.$0,doc.docNode),holes.push(DocElemNode.New(Attrs.Empty(p),doc.docNode,{
@@ -1893,6 +1913,7 @@ if (!console) {
  };
  Doc.New=Runtime$1.Ctor(function(docNode,updates)
  {
+  Obj.New.call(this);
   this.docNode=docNode;
   this.updates=updates;
  },Doc);
@@ -2514,7 +2535,7 @@ if (!console) {
   },
   GetEnumerator0:function()
   {
-   return Enumerator.Get0(Arrays.concat(JSModule.GetFieldValues(this.data)));
+   return Enumerator.Get0(Arrays.concat(JS.GetFieldValues(this.data)));
   }
  },Obj,Dictionary);
  Dictionary.New$5=Runtime$1.Ctor(function()
@@ -2524,6 +2545,7 @@ if (!console) {
  Dictionary.New$6=Runtime$1.Ctor(function(init,equals,hash)
  {
   var e,x;
+  Obj.New.call(this);
   this.equals=equals;
   this.hash=hash;
   this.count=0;
@@ -2648,6 +2670,7 @@ if (!console) {
  HashSet.New$4=Runtime$1.Ctor(function(init,equals,hash)
  {
   var e;
+  Obj.New.call(this);
   this.equals=equals;
   this.hash=hash;
   this.data=[];
@@ -3203,6 +3226,7 @@ if (!console) {
  },Obj,T$1);
  T$1.New=Runtime$1.Ctor(function(s,c,n,d)
  {
+  Obj.New.call(this);
   this.s=s;
   this.c=c;
   this.n=n;
@@ -3242,7 +3266,7 @@ if (!console) {
  SC$3.$cctor=function()
  {
   SC$3.$cctor=Global.ignore;
-  SC$3.Doc=Global.document;
+  SC$3.Doc=self.document;
  };
  Docs.LinkElement=function(el,children)
  {
@@ -3422,7 +3446,7 @@ if (!console) {
  {
   var p,before;
   p=afterDelim.parentNode;
-  before=Global.document.createTextNode("");
+  before=self.document.createTextNode("");
   p.insertBefore(before,afterDelim);
   Docs.LinkPrevElement(afterDelim,doc);
   return before;
@@ -3481,7 +3505,7 @@ if (!console) {
   strRE=new Global.RegExp(Templates.TextHoleRE(),"g");
   while(m=strRE.exec(s),m!==null)
    {
-    n.parentNode.insertBefore(Global.document.createTextNode(Slice.string(s,{
+    n.parentNode.insertBefore(self.document.createTextNode(Slice.string(s,{
      $:1,
      $0:li
     },{
@@ -3489,7 +3513,7 @@ if (!console) {
      $0:strRE.lastIndex-Arrays.get(m,0).length-1
     })),n);
     li=strRE.lastIndex;
-    hole=Global.document.createElement("span");
+    hole=self.document.createElement("span");
     hole.setAttribute("ws-replace",Arrays.get(m,1).toLowerCase());
     n.parentNode.insertBefore(hole,n);
    }
@@ -3708,6 +3732,7 @@ if (!console) {
  },Obj,KeyCollection);
  KeyCollection.New=Runtime$1.Ctor(function(d)
  {
+  Obj.New.call(this);
   this.d=d;
  },KeyCollection);
  DocElemNode=UI.DocElemNode=Runtime$1.Class({
@@ -4375,6 +4400,7 @@ if (!console) {
  };
  Easing.New=Runtime$1.Ctor(function(transformTime)
  {
+  Obj.New.call(this);
   this.transformTime=transformTime;
  },Easing);
  AsyncBody.New=function(k,ct)
@@ -4470,12 +4496,14 @@ if (!console) {
  },Obj,Scheduler);
  Scheduler.New=Runtime$1.Ctor(function()
  {
+  Obj.New.call(this);
   this.idle=true;
   this.robin=[];
  },Scheduler);
  CancellationTokenSource=WebSharper.CancellationTokenSource=Runtime$1.Class({},Obj,CancellationTokenSource);
  CancellationTokenSource.New=Runtime$1.Ctor(function()
  {
+  Obj.New.call(this);
   this.c=false;
   this.pending=null;
   this.r=[];
@@ -4609,6 +4637,7 @@ if (!console) {
  {
   var $this;
   $this=this;
+  Obj.New.call(this);
   this.push=push;
   this.value=void 0;
   this.dirty=false;
@@ -4618,7 +4647,7 @@ if (!console) {
    $this.dirty=true;
   },view);
  },DynamicAttrNode);
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},null,OperationCanceledException);
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},Error,OperationCanceledException);
  OperationCanceledException.New=Runtime$1.Ctor(function(ct)
  {
   OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
@@ -4627,6 +4656,7 @@ if (!console) {
  {
   this.message=message;
   this.inner=inner;
+  Object.setPrototypeOf(this,OperationCanceledException.prototype);
   this.ct=ct;
  },OperationCanceledException);
  Lazy.Create=function(f)
@@ -4672,5 +4702,7 @@ if (!console) {
 }());
 
 
-if (typeof IntelliFactory !=='undefined')
+if (typeof IntelliFactory !=='undefined') {
+  IntelliFactory.Runtime.ScriptBasePath = '/Content/';
   IntelliFactory.Runtime.Start();
+}
