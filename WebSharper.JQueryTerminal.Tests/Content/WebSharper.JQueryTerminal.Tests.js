@@ -361,16 +361,16 @@ if (!console) {
 (function()
 {
  "use strict";
- var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,UI,Var,Obj,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,AttrProxy,List,Handler,JavaScript,JS,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,Client$1,Templates,Doc,Pervasives,Collections,List$1,Array,Unchecked,System,Guid,T,AttrModule,Dictionary,HashSet,Client$2,Seq,Abbrev,Fresh,EventTarget,Node,DomUtility,Object,Attrs,View,CheckedInput,Numeric,DictionaryUtil,Enumerator,T$1,SC$2,WindowOrWorkerGlobalScope,SC$3,Docs,SC$4,SC$5,Prepare,Slice,KeyCollection,DocElemNode,CharacterData,An,Settings,Mailbox,HashSetUtil,Strings,Attrs$1,Dyn,Docs$1,RunState,NodeSet,Anims,SC$6,Elt,SC$7,Concurrency,AppendList,Updates,Easing,AsyncBody,SC$8,CT,HashSet$1,String,Scheduler,CancellationTokenSource,DomNodes,Char,DynamicAttrNode,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,Queue,IntelliFactory,Runtime$1,$,console,Math,Date;
+ var Global,WebSharperTerminalSample,Client,SC$1,WebSharper,Operators,Obj,UI,Var$1,Templating,Runtime,Server,TemplateInstance,Arrays,ProviderBuilder,AttrProxy,List,Handler,JavaScript,JS,Var,WebSharper$JQueryTerminal$Tests_Templates,ConcreteVar,Snap,Client$1,Templates,Doc,Pervasives,Collections,List$1,Array,Unchecked,System,Guid,T,AttrModule,Dictionary,HashSet,Client$2,Seq,Abbrev,Fresh,EventTarget,Node,DomUtility,Object,Attrs,View,CheckedInput,Numeric,DictionaryUtil,Enumerator,T$1,SC$2,WindowOrWorkerGlobalScope,SC$3,Docs,SC$4,SC$5,Prepare,Slice,KeyCollection,DocElemNode,CharacterData,An,Settings,Mailbox,HashSetUtil,Strings,Attrs$1,Dyn,Docs$1,RunState,NodeSet,Anims,SC$6,Elt,SC$7,Concurrency,AppendList,Updates,Easing,AsyncBody,SC$8,CT,HashSet$1,String,Scheduler,CancellationTokenSource,DomNodes,Char,DynamicAttrNode,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,Queue,IntelliFactory,Runtime$1,$,console,Math,Date;
  Global=self;
  WebSharperTerminalSample=Global.WebSharperTerminalSample=Global.WebSharperTerminalSample||{};
  Client=WebSharperTerminalSample.Client=WebSharperTerminalSample.Client||{};
  SC$1=Global.StartupCode$WebSharper_JQueryTerminal_Tests$Client=Global.StartupCode$WebSharper_JQueryTerminal_Tests$Client||{};
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  Operators=WebSharper.Operators=WebSharper.Operators||{};
- UI=WebSharper.UI=WebSharper.UI||{};
- Var=UI.Var=UI.Var||{};
  Obj=WebSharper.Obj=WebSharper.Obj||{};
+ UI=WebSharper.UI=WebSharper.UI||{};
+ Var$1=UI.Var$1=UI.Var$1||{};
  Templating=UI.Templating=UI.Templating||{};
  Runtime=Templating.Runtime=Templating.Runtime||{};
  Server=Runtime.Server=Runtime.Server||{};
@@ -382,6 +382,7 @@ if (!console) {
  Handler=Server.Handler=Server.Handler||{};
  JavaScript=WebSharper.JavaScript=WebSharper.JavaScript||{};
  JS=JavaScript.JS=JavaScript.JS||{};
+ Var=UI.Var=UI.Var||{};
  WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates=Global.WebSharper$JQueryTerminal$Tests_Templates||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  Snap=UI.Snap=UI.Snap||{};
@@ -550,7 +551,7 @@ if (!console) {
   SC$1.interpreter=function(command)
   {
    var $1,$2,id,rvProjName,html,b,t,E,p,i,$3,$4,$5;
-   return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?(Client.set_numOfTemplates(Client.numOfTemplates()+1),id="template"+Global.String(Client.numOfTemplates()),rvProjName=Var.Create$1(""),html=(b=(t=(E=List.ofArray([AttrModule.Handler("keypress",function()
+   return($1=Client.Help(command),$1!=null&&$1.$==1)?this.echo("Commands: help, clear, template"):($2=Client.Template(command),$2!=null&&$2.$==1)?(Client.set_numOfTemplates(Client.numOfTemplates()+1),id="template"+Global.String(Client.numOfTemplates()),rvProjName=Var$1.Create$1(""),html=(b=(t=(E=List.ofArray([AttrModule.Handler("keypress",function()
    {
     return function(ev)
     {
@@ -612,14 +613,6 @@ if (!console) {
  {
   return[kvp.K,kvp.V];
  };
- Var.Create$1=function(v)
- {
-  return new ConcreteVar.New(false,Snap.New({
-   $:2,
-   $0:v,
-   $1:[]
-  }),v);
- };
  Obj=WebSharper.Obj=Runtime$1.Class({
   Equals:function(obj)
   {
@@ -633,6 +626,15 @@ if (!console) {
  Obj.New=Runtime$1.Ctor(function()
  {
  },Obj);
+ Var$1=UI.Var$1=Runtime$1.Class({},Obj,Var$1);
+ Var$1.Create$1=function(v)
+ {
+  return new ConcreteVar.New(false,Snap.New({
+   $:2,
+   $0:v,
+   $1:[]
+  }),v);
+ };
  TemplateInstance=Server.TemplateInstance=Runtime$1.Class({
   get_Doc:function()
   {
@@ -764,15 +766,15 @@ if (!console) {
   function c(name,ty)
   {
    var p,r,r$1,r$2;
-   return filledVars.Contains(name)?null:(p=ty===0?(r=Var.Create$1(""),[{
+   return filledVars.Contains(name)?null:(p=ty===0?(r=Var$1.Create$1(""),[{
     $:8,
     $0:name,
     $1:r
-   },r]):ty===1?(r$1=Var.Create$1(0),[{
+   },r]):ty===1?(r$1=Var$1.Create$1(0),[{
     $:13,
     $0:name,
     $1:r$1
-   },r$1]):ty===2?(r$2=Var.Create$1(false),[{
+   },r$1]):ty===2?(r$2=Var$1.Create$1(false),[{
     $:9,
     $0:name,
     $1:r$2
