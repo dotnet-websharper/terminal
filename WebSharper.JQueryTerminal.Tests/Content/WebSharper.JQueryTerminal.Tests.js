@@ -1554,7 +1554,7 @@ if (!console) {
  };
  Templates.InlineTemplate=function(el,fillWith)
  {
-  var els,$1,holes,updates,attrs,afterRender,fw,e,x;
+  var els,$1,$2,$3,holes,updates,attrs,afterRender,fw,e,x;
   function addAttr(el$1,attr)
   {
    var attr$1,m,f;
@@ -1735,13 +1735,13 @@ if (!console) {
   });
   DomUtility.IterSelector(el,"[ws-attr-holes]",function(e$1)
   {
-   var re,holeAttrs,i,$2;
+   var re,holeAttrs,i,$4;
    re=new Global.RegExp(Templates.TextHoleRE(),"g");
    holeAttrs=Strings.SplitChars(e$1.getAttribute("ws-attr-holes"),[" "],1);
    e$1.removeAttribute("ws-attr-holes");
-   for(i=0,$2=holeAttrs.length-1;i<=$2;i++)(function()
+   for(i=0,$4=holeAttrs.length-1;i<=$4;i++)(function()
    {
-    var m,lastIndex,$3,finalText,value,s,s$1,s$2,s$3,attrName,s$4,res,textBefore;
+    var m,lastIndex,$5,finalText,value,s,s$1,s$2,s$3,attrName,s$4,res,textBefore;
     attrName=Arrays.get(holeAttrs,i);
     s$4=e$1.getAttribute(attrName);
     m=null;
@@ -1764,7 +1764,7 @@ if (!console) {
      $0:lastIndex
     },null);
     re.lastIndex=0;
-    value=Arrays.foldBack(function($4,$5)
+    value=Arrays.foldBack(function($6,$7)
     {
      return(function(t)
      {
@@ -1831,7 +1831,7 @@ if (!console) {
         $1:views
        })]:[textBefore$1+holeContent.$0+textAfter,views];
       };
-     }($4))($5);
+     }($6))($7);
     },res,[finalText,T.Empty]);
     return addAttr(e$1,value[1].$==1?value[1].$1.$==1?value[1].$1.$1.$==1?value[1].$1.$1.$1.$==0?(s=value[0],AttrModule.Dynamic(attrName,View.Map3(function(v1,v2,v3)
     {
@@ -1862,8 +1862,12 @@ if (!console) {
       f(el$1);
      },afterRender);
     }
-   },$1?$1.$0:void 0)
-  },["Render"]),Array.TreeReduce(View.Const(),View.Map2Unit,updates)];
+   },$1?$1.$0:void 0),
+   El:($2=!Unchecked.Equals(els,null)&&els.length===1&&(Arrays.get(els,0)instanceof Node&&(Arrays.get(els,0)instanceof Global.Element&&($3=Arrays.get(els,0),true)))?{
+    $:1,
+    $0:$3
+   }:null,$2?$2.$0:void 0)
+  },["Render","El"]),Array.TreeReduce(View.Const(),View.Map2Unit,updates)];
  };
  Doc=UI.Doc=Runtime$1.Class({},Obj,Doc);
  Doc.RunById=function(id,tr)
@@ -2124,13 +2128,10 @@ if (!console) {
     {
      case 0:
       return typeof b=="undefined"?0:-1;
-      break;
      case 1:
       return Operators.FailWith("Cannot compare function values.");
-      break;
      case 2:
       return a<b?-1:1;
-      break;
      case 3:
       if(a===null)
        $2=-1;
@@ -2168,7 +2169,6 @@ if (!console) {
              $2=cmp[0];
             }
       return $2;
-      break;
     }
    }
  };
