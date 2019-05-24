@@ -16,4 +16,4 @@ files
     ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.dll ==> lib/netstandard2.0
     ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper ~> 4.5.10
+        WebSharper ~> 4.5.12
