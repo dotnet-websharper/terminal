@@ -11,9 +11,8 @@ description
 tags
     Web JavaScript F# C#
 files
-    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.dll ==> lib/net461
-    ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.xml ==> lib/net461
     ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.dll ==> lib/netstandard2.0
     ../WebSharper.JQueryTerminal/bin/Release/netstandard2.0/WebSharper.JQueryTerminal.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper ~> LOCKEDVERSION:[3]
+    framework: netstandard2.0
+            WebSharper ~> LOCKEDVERSION:[3]
